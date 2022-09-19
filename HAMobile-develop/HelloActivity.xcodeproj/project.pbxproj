@@ -182,13 +182,6 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
-		049287AD28C992DF006B2EA6 /* APIProvider */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = APIProvider;
-			sourceTree = "<group>";
-		};
 		049D401028BDABD100606A0E /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +244,6 @@
 				04F3904428D49034002D92BA /* Utilities */,
 				04F3903F28D49014002D92BA /* ViewModels */,
 				041E0A8628D2DA240076A5F4 /* View */,
-				049287AD28C992DF006B2EA6 /* APIProvider */,
 				049287AB28C8A1D1006B2EA6 /* Info.plist */,
 				04C6E66728C8423800317F2D /* Model */,
 				049D401128BDAC3D00606A0E /* Controller */,

@@ -45,7 +45,7 @@
 		04F3904828D49034002D92BA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3904528D49034002D92BA /* APIClient.swift */; };
 		04F3904928D49034002D92BA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3904628D49034002D92BA /* APIManager.swift */; };
 		04F3904A28D49034002D92BA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3904728D49034002D92BA /* Application.swift */; };
-		04F3905828D4906A002D92BA /* FBLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905428D4906A002D92BA /* FBLoginApp.swift */; };
+		04F3905828D4906A002D92BA /* FBLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905428D4906A002D92BA /* FBLoginButton.swift */; };
 		04F3905928D4906A002D92BA /* LineLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905528D4906A002D92BA /* LineLoginButton.swift */; };
 		04F3905A28D4906A002D92BA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905728D4906A002D92BA /* RegisterView.swift */; };
 		04F3906028D490A1002D92BA /* AuthenticationRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905F28D490A1002D92BA /* AuthenticationRegister.swift */; };
@@ -53,6 +53,7 @@
 		04F3906528D490D7002D92BA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906428D490D7002D92BA /* View+Extensions.swift */; };
 		04F3906928D49170002D92BA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906828D49170002D92BA /* RegisterViewModel.swift */; };
 		A7DD615638CBC2BB280E3A7D /* Pods_HelloActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */; };
+		B5CF6A6E28D8BC3A006143CD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */; };
 		B5E19EB628D68D1A008BCEB7 /* AuthenticationLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E19EB528D68D1A008BCEB7 /* AuthenticationLogin.swift */; };
 		FD99E76028D8016500116D23 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E75F28D8016500116D23 /* R.generated.swift */; };
 		FD99E76328D8102700116D23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD99E76528D8102700116D23 /* Localizable.strings */; };
@@ -120,7 +121,7 @@
 		04F3904528D49034002D92BA /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		04F3904628D49034002D92BA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		04F3904728D49034002D92BA /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		04F3905428D4906A002D92BA /* FBLoginApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginApp.swift; sourceTree = "<group>"; };
+		04F3905428D4906A002D92BA /* FBLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginButton.swift; sourceTree = "<group>"; };
 		04F3905528D4906A002D92BA /* LineLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineLoginButton.swift; sourceTree = "<group>"; };
 		04F3905728D4906A002D92BA /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		04F3905F28D490A1002D92BA /* AuthenticationRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationRegister.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		04F3906428D490D7002D92BA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		04F3906828D49170002D92BA /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloActivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B5E19EB528D68D1A008BCEB7 /* AuthenticationLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLogin.swift; sourceTree = "<group>"; };
 		F5726FB04EBD7328E78841CD /* Pods-HelloActivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.release.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.release.xcconfig"; sourceTree = "<group>"; };
 		FCD60DE54D92D0F128430D42 /* Pods-HelloActivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.debug.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.debug.xcconfig"; sourceTree = "<group>"; };
@@ -321,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				04830C5C28CED86800EA50B1 /* LoginView.swift */,
-				04F3905428D4906A002D92BA /* FBLoginApp.swift */,
+				04F3905428D4906A002D92BA /* FBLoginButton.swift */,
 				04F3905528D4906A002D92BA /* LineLoginButton.swift */,
 			);
 			path = Login;
@@ -348,6 +350,7 @@
 			children = (
 				04F3906428D490D7002D92BA /* View+Extensions.swift */,
 				FD99E76C28D8722800116D23 /* UserDefault+Extensions.swift */,
+				B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -596,7 +599,7 @@
 			files = (
 				FD99E76028D8016500116D23 /* R.generated.swift in Sources */,
 				04F3904A28D49034002D92BA /* Application.swift in Sources */,
-				04F3905828D4906A002D92BA /* FBLoginApp.swift in Sources */,
+				04F3905828D4906A002D92BA /* FBLoginButton.swift in Sources */,
 				FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */,
 				049D401728BDAE9000606A0E /* ChatView.swift in Sources */,
 				041E0A9028D416F60076A5F4 /* AreaItem.swift in Sources */,
@@ -606,6 +609,7 @@
 				049287AA28C8A12C006B2EA6 /* AppDelegate.swift in Sources */,
 				041E0A9428D45B470076A5F4 /* ListTourNew.swift in Sources */,
 				049D401528BDAD3D00606A0E /* ProfileView.swift in Sources */,
+				B5CF6A6E28D8BC3A006143CD /* String+Extensions.swift in Sources */,
 				0444622528D1810A00F3B7F2 /* TourPageItem.swift in Sources */,
 				049D401F28BEF44600606A0E /* SideMenu.swift in Sources */,
 				049D401328BDAD1200606A0E /* JobView.swift in Sources */,

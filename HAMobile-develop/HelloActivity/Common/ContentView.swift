@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var tabbarRouter = TabBarRouter()
-    @StateObject var authenticationRegister = AuthenticationRegister()
     @StateObject var progressApp = ProgressApp()
     
     @State var isShowPopUp = false
@@ -45,7 +44,6 @@ struct ContentView: View {
         case .newRegister:
             RegisterView(tabbarRouter: tabbarRouter)
                 .environmentObject(tabbarRouter)
-                .environmentObject(authenticationRegister)
                 .environmentObject(progressApp)
         }
     }
@@ -128,10 +126,9 @@ struct ContentView: View {
                 showMainView(geometry)
                 
                 if progressApp.isShowProgressView {
-                    LoadingView()
-                        .background(Color.white)
-                        .opacity(0.5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    withAnimation {
+                        LoadingView()
+                    }
                 }
             }
             SideMenu(
@@ -153,18 +150,25 @@ struct ContentView: View {
         if  let token = UserDefaults.standard.string(forKey: "token"), !token.isEmpty {
             return .profile
         } else {
-            if let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue), !dataSocial.token.isEmpty {
-                return .newRegister
-            } else {
-                return .login
-            }
+            return .login
         }
     }
 }
 
-    struct MyTabBar_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+struct MyTabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
+}
 
+struct LoadingView: View {
+    var body: some View {
+        VStack {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                .scaleEffect(3)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white.opacity(0.3))
+    }
+}

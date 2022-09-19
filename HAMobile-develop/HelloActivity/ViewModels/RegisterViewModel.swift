@@ -7,27 +7,12 @@
 
 import Foundation
 
-enum TypeSocialRegister: Codable {
+enum TypeSocial {
     case facebook(String)
     case google(String)
     case line(String)
     case yahoo(String)
     case unknow
-    
-    var stringToken: String? {
-        switch self {
-        case .facebook(let token):
-            return token
-        case .google(let token):
-            return token
-        case .line(let token):
-            return token
-        case .yahoo(let token):
-            return token
-        case .unknow:
-            return ""
-        }
-    }
 }
 
 struct RegisterCredentials: Codable {

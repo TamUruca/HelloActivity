@@ -41,4 +41,12 @@ final class LoginViewModel: ObservableObject {
             }
         })
     }
+    
+    func isLoginSocial(type: String) -> Bool {
+        if let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue), !dataSocial.token.isEmpty {
+            return dataSocial.type == type
+        } else {
+            return false
+        }
+    }
 }

@@ -113,10 +113,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 3 images.
+  /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `banner`.
     static let banner = Rswift.ImageResource(bundle: R.hostingBundle, name: "banner")
+    /// Image `ic_calendar`.
+    static let ic_calendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_calendar")
+    /// Image `ic_check_success`.
+    static let ic_check_success = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_check_success")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `slogan`.
@@ -126,6 +130,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "banner", bundle: ..., traitCollection: ...)`
     static func banner(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.banner, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ic_calendar", bundle: ..., traitCollection: ...)`
+    static func ic_calendar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_calendar, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ic_check_success", bundle: ..., traitCollection: ...)`
+    static func ic_check_success(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_check_success, compatibleWith: traitCollection)
     }
     #endif
 
@@ -168,7 +186,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 9 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 11 localization keys.
     struct localizable {
       /// en translation: Facebookでログイン
       ///
@@ -182,6 +200,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_button_line_screen_login = Rswift.StringResource(key: "string_button_line_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: please enter password!
+      ///
+      /// Locales: en, ja
+      static let error_empty_password_screen_login = Rswift.StringResource(key: "error_empty_password_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: パスワード
       ///
       /// Locales: en, ja
@@ -194,6 +216,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let hint_username_screen_login = Rswift.StringResource(key: "hint_username_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: メールアドレスは必須です。
+      ///
+      /// Locales: en, ja
+      static let error_empty_username_screen_login = Rswift.StringResource(key: "error_empty_username_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: ログイン
       ///
       /// Locales: en, ja
@@ -252,6 +278,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("string_button_line_screen_login", bundle: bundle, comment: "")
       }
 
+      /// en translation: please enter password!
+      ///
+      /// Locales: en, ja
+      static func error_empty_password_screen_login(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error_empty_password_screen_login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error_empty_password_screen_login"
+        }
+
+        return NSLocalizedString("error_empty_password_screen_login", bundle: bundle, comment: "")
+      }
+
       /// en translation: パスワード
       ///
       /// Locales: en, ja
@@ -295,6 +336,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("hint_username_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: メールアドレスは必須です。
+      ///
+      /// Locales: en, ja
+      static func error_empty_username_screen_login(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error_empty_username_screen_login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error_empty_username_screen_login"
+        }
+
+        return NSLocalizedString("error_empty_username_screen_login", bundle: bundle, comment: "")
       }
 
       /// en translation: ログイン

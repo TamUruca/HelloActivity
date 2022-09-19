@@ -28,6 +28,7 @@ struct LoginView: View {
     @State private var  loggedGoogle = false
     @State var mangaerFB = LoginManager()
     @State var mangaerGoogle = LoginManager()
+    @EnvironmentObject var progressApp: ProgressApp
     
     var body: some View {
         GeometryReader { geometry in
@@ -48,11 +49,13 @@ struct LoginView: View {
                         
                         HStack(alignment: .top, spacing: 10){
                             if isError {
-                                Image(uiImage: R.image.logo()!)
+                                Image(uiImage: R.image.ic_check_success()!)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .foregroundColor(.red)
                                     .padding(.leading, 0)
+                                    .frame(width: 15, height: 15)
+                                    .padding(.top, 4)
                                 Text(error)
                                     .foregroundColor(.red)
                             }
@@ -84,43 +87,33 @@ struct LoginView: View {
                                 
                                 if username.isEmpty {
                                     isError = true
-                                    error = "Please enter username."
+                                    error = R.string.localizable.error_empty_username_screen_login()
                                     return
                                 }
                                 
                                 if password.isEmpty {
                                     isError = true
-                                    error = "Please enter password."
+                                    error = R.string.localizable.error_empty_password_screen_login()
                                     return
                                 }
                                 
                                 // login
-                                loginVM.postAPILogin{ isSuccess in
+                                loginVM.postAPILogin(progressApp: progressApp){ isSuccess in
                                     if isSuccess {
                                         tabbarRouter.currentPage = .profile
                                     } else {
-                                        print(loginVM.error?.errorDescription)
                                         isError = true
                                         error = loginVM.error?.errorDescription ?? ""
                                     }
                                     
                                 }
-                                
-//                                startLoading(isShow: true)
-//                                loginViewModel.postAPILogin(email: username, password: password, completion: { (isSuccess, message) in
-//                                    startLoading(isShow: false)
-//                                    if isSuccess {
-//                                        isError = false
-//                                        error = ""
-//                                        tabbarRouter.currentPage = .profile
-//                                    } else {
-//                                        isError = true
-//                                        error = message
-//                                    }
-//                                })
                             }, label: {
                                 Text(R.string.localizable.string_button_login_screen_login()).foregroundColor(.white)
                                     .font(.system(size: 16))
+                                    .frame(
+                                        minWidth: 0,
+                                        maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center
+                                    )
                             })
                             .padding(.trailing, 0)
                             .frame(width: geometry.size.width - 40, height: 40)
@@ -138,6 +131,10 @@ struct LoginView: View {
                             }, label: {
                                 Text(R.string.localizable.string_button_register_screen_login()).foregroundColor(.white)
                                     .font(.system(size: 16))
+                                    .frame(
+                                        minWidth: 0,
+                                        maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center
+                                    )
                             })
                             .padding(.trailing, 0)
                             .frame(width: geometry.size.width - 40, height: 40)
@@ -174,13 +171,6 @@ struct LoginView: View {
                     .frame(width: geometry.size.width)
                 }
                 .padding(.top, 10)
-                
-                if loginVM.isShowProgressView {
-                    LoadingView()
-                        .background(Color.red)
-                        .opacity(0.5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
             }
             .frame(height: geometry.size.height)
         }

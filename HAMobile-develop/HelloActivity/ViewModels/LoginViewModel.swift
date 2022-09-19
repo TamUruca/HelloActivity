@@ -24,10 +24,10 @@ final class LoginViewModel: ObservableObject {
     }
     
     // MARK: - Call API
-    func postAPILogin(completion: @escaping (Bool) -> Void) {
-        isShowProgressView = true
-        ApiManager.shareInstance.postAPILogin(credentials: credentials, success: { [weak self] (isSuccess, data) in
-            self?.isShowProgressView = false
+    func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
+        progressApp.isShowProgressView = true
+        ApiManager.shareInstance.postAPILogin( credentials: credentials, success: { (isSuccess, data) in
+            progressApp.isShowProgressView = false
             guard isSuccess else {
                 completion(false)
                 return
@@ -35,28 +35,11 @@ final class LoginViewModel: ObservableObject {
             
             completion(isSuccess)
         }, failured: { [weak self] (message) in
-//            self?.isShowProgressView = false
-            self?.error = .errorAPI(error: message)
-            completion(false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                progressApp.isShowProgressView = false
+                self?.error = .errorAPI(error: message)
+                completion(false)
+            }
         })
     }
 }
-
-//
-//final class LoginViewModel: ObservableObject {
-//
-//    @Published var userData: UserLogin?
-//
-//    // MARK: - Call API
-//    func postAPILogin(email: String, password: String ,completion: @escaping Result ) {
-//        ApiManager.shareInstance.postAPILogin(email: email, password: password,success: { (isSuccess, data) in
-//            guard isSuccess else {
-//                completion(false, "error unknow")
-//                return
-//            }
-//            completion(isSuccess, "")
-//        }, failured: { (message) in
-//            completion(false, message)
-//        })
-//    }
-//}

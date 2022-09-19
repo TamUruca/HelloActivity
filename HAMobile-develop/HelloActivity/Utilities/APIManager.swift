@@ -9,6 +9,21 @@
 import Foundation
 import Alamofire
 
+enum TypeContentHeader {
+    case json
+    case urlncoded
+    
+    var stringDescription: String {
+        switch self {
+        case .json:
+            return "application/json"
+        case .urlncoded:
+            return "application/x-www-form-urlencoded"
+        }
+    }
+        
+}
+
 enum ErrorServer {
     case requestSuccess
     case registerSuccess
@@ -126,11 +141,11 @@ class ApiManager {
     }
     
     // get Header
-    private func getHeader(token: String) -> HTTPHeaders {
+    private func getHeader(token: String, typeContentHeader: TypeContentHeader) -> HTTPHeaders {
         return [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
-            "Content-Type": "application/x-www-form-urlencoded" ]
+            "Content-Type": typeContentHeader.stringDescription ]
     }
 }
 
@@ -141,11 +156,11 @@ extension ApiManager {
                              success: @escaping Successs<UserLogin>,
                              failured: @escaping Failured) {
         if !Reachability.shared.isConnectedToInternet {
-            failured("error_not_connect_network")
+            failured(R.string.localizable.error_network())
             return
         }
         let parameters: Parameters = ["email": credentials.email, "password": credentials.password, "terminal_id": 123456]
-        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "") ).responseJSON { (response) in
+        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
             self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
         }
     }
@@ -154,11 +169,11 @@ extension ApiManager {
                              success: @escaping Successs<Any>,
                              failured: @escaping Failured) {
         if !Reachability.shared.isConnectedToInternet {
-            failured("error_not_connect_network")
+            failured(R.string.localizable.error_network())
             return
         }
-        let parameters: Parameters = ["yourNamw": credentials.yourName, "name": credentials.name, "nickName": credentials.nickName, "emailAddress": credentials.emailAddress, "password": credentials.password ]
-        sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "") ).responseJSON { (response) in
+        let parameters: Parameters = ["yourName": credentials.yourName, "name": credentials.name, "nickName": credentials.nickName, "emailAddress": credentials.emailAddress, "password": credentials.password ]
+        sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .urlncoded) ).responseJSON { (response) in
             self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
         }
     }

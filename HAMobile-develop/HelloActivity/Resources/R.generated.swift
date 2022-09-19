@@ -186,7 +186,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 23 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 24 localization keys.
     struct localizable {
       /// en translation: Email address
       ///
@@ -216,6 +216,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let label_password_screen_register = Rswift.StringResource(key: "label_password_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Please connect network
+      ///
+      /// Locales: en, ja
+      static let error_network = Rswift.StringResource(key: "error_network", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: Register
       ///
       /// Locales: en, ja
@@ -384,6 +388,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("label_password_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Please connect network
+      ///
+      /// Locales: en, ja
+      static func error_network(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error_network", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error_network"
+        }
+
+        return NSLocalizedString("error_network", bundle: bundle, comment: "")
       }
 
       /// en translation: Register

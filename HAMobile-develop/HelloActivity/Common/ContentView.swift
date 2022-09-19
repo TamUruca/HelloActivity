@@ -129,12 +129,11 @@ struct ContentView: View {
                     
                     if progressApp.isShowProgressView {
                         LoadingView()
-                            .background(Color.gray)
+                            .background(Color.white)
                             .opacity(0.5)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
-                .edgesIgnoringSafeArea(.all)
                 SideMenu(
                     width: geometry.size.width*0.8,
                     isOpen: self.menuOpen,

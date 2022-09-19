@@ -7,12 +7,33 @@
 
 import Foundation
 
+enum TypeSocialRegister: Codable {
+    case facebook(String)
+    case google(String)
+    case line(String)
+    case unknow
+    
+    var tokenString: String? {
+        switch self {
+        case .facebook(let token):
+            return token
+        case .google(let token):
+            return token
+        case .line(let token):
+            return token
+        case .unknow:
+            return ""
+        }
+    }
+}
+
 struct RegisterCredentials: Codable {
     var yourName = ""
     var name = ""
     var nickName = ""
     var emailAddress = ""
     var password = ""
+    var typeSocial: TypeSocialRegister = .unknow
 }
 
 class RegisterViewModel: ObservableObject {

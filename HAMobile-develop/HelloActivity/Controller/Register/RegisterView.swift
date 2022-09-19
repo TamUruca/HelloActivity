@@ -13,6 +13,7 @@ struct RegisterView: View {
     @EnvironmentObject var authenticationRegister: AuthenticationRegister
     @StateObject private var registerVM = RegisterViewModel()
     @EnvironmentObject var progressApp: ProgressApp
+    var typeSocial: TypeSocialRegister = .unknow
     
     var body: some View {
         GeometryReader { geometry in
@@ -124,19 +125,5 @@ struct LoadingViewRegister: View {
                 .progressViewStyle(CircularProgressViewStyle(tint: .gray))
                 .scaleEffect(3)
         }
-    }
-}
-
-struct CustomTextField123: View {
-    @Binding var text: String
-    
-    var body: some View {
-        
-        TextField("メールアドレス", text: $text)
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(.gray, lineWidth: 1)
-            )
     }
 }

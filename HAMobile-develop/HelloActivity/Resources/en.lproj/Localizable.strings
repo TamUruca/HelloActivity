@@ -6,6 +6,10 @@
   
 */
 
+
+// network
+"error_network"                                                    = "Please connect network";
+
 // screen logon
 "title_screen_login"                                                = "ログイン";
 "hint_username_screen_login"                                         = "メールアドレス";

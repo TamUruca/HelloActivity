@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class TabBarRouter: ObservableObject {
-    @Published var currentPage: Page = .newRegister
+    @Published var currentPage: Page = .home
     //
 }
 

@@ -212,7 +212,6 @@
 				049D401428BDAD3D00606A0E /* ProfileView.swift */,
 				049D401828BDE40C00606A0E /* SettingView.swift */,
 				049D401A28BEEBB200606A0E /* NotificationView.swift */,
-				04830C5C28CED86800EA50B1 /* LoginView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -319,6 +318,7 @@
 		04F3905328D4906A002D92BA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				04830C5C28CED86800EA50B1 /* LoginView.swift */,
 				04F3905428D4906A002D92BA /* FBLoginApp.swift */,
 				04F3905528D4906A002D92BA /* LineLoginButton.swift */,
 			);

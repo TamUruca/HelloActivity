@@ -18,3 +18,17 @@
 "string_button_line_screen_login"                                    = "Line";
 "error_empty_username_screen_login"                                  = "メールアドレスは必須です。";
 "error_empty_password_screen_login"                                  = "please enter password!";
+
+// screen register
+"title_screen_register"                                             = "ログイン";
+"label_your_email_screen_register"                                   = "Your email";
+"label_name_screen_register"                                        = "Name";
+"label_nick_name_screen_register"                                   = "Nick name";
+"label_email_address_screen_register"                                = "Email address";
+"label_password_screen_register"                                    = "Password";
+"hint_your_email_screen_register"                                   = "enter your name...";
+"hint_name_screen_register"                                        = "enter name...";
+"hint_nick_name_screen_register"                                    = "enter nick name...";
+"hint_email_address_screen_register"                                = "enter email address...";
+"hint_password_screen_register"                                    = "enter password...";
+"string_button_register_screen_register"                            = "Register";

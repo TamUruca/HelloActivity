@@ -12,35 +12,36 @@ struct RegisterView: View {
     @ObservedObject var tabbarRouter: TabBarRouter
     @EnvironmentObject var authenticationRegister: AuthenticationRegister
     @StateObject private var registerVM = RegisterViewModel()
+    @EnvironmentObject var progressApp: ProgressApp
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ScrollView (.vertical, showsIndicators: false) {
                     VStack {
-                        Text("Register")
+                        Text(R.string.localizable.title_screen_register())
                             .font(.largeTitle)
                         
-                        buildLable(geometry: geometry, text: "Your email")
+                        buildLable(geometry: geometry, text: R.string.localizable.label_your_email_screen_register())
                         .padding(.top, -20)
-                        CustomTextField(geometry: geometry, textHint: "enter email", valueText: $registerVM.credentials.yourName)
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_your_email_screen_register(), valueText: $registerVM.credentials.yourName)
                         
-                        buildLable(geometry: geometry, text: "Name")
-                        CustomTextField(geometry: geometry, textHint: "enter name", valueText: $registerVM.credentials.name)
+                        buildLable(geometry: geometry, text: R.string.localizable.label_name_screen_register())
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_name_screen_register(), valueText: $registerVM.credentials.name)
                         
-                        buildLable(geometry: geometry, text: "NickName")
-                        CustomTextField(geometry: geometry, textHint: "enter nickName", valueText: $registerVM.credentials.nickName)
+                        buildLable(geometry: geometry, text: R.string.localizable.label_nick_name_screen_register())
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_nick_name_screen_register(), valueText: $registerVM.credentials.nickName)
 
-                        buildLable(geometry: geometry, text: "EmailAddress")
-                        CustomTextField(geometry: geometry, textHint: "enter emailAddress", valueText: $registerVM.credentials.emailAddress)
+                        buildLable(geometry: geometry, text: R.string.localizable.label_email_address_screen_register())
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_email_address_screen_register(), valueText: $registerVM.credentials.emailAddress)
                     }
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     .frame(width: geometry.size.width)
                     
                     VStack {
-                        buildLable(geometry: geometry, text: "Password")
-                        CustomTextField(geometry: geometry, textHint: "enter password", valueText: $registerVM.credentials.password)
+                        buildLable(geometry: geometry, text: R.string.localizable.label_password_screen_register())
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_password_screen_register(), valueText: $registerVM.credentials.password)
                     }
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
@@ -51,12 +52,16 @@ struct RegisterView: View {
                         HStack(alignment: .top, spacing: 10){
                             Button(action: {
                                 // register
-                                registerVM.postRegister{ isSuccess in
+                                registerVM.postRegister(progressApp: progressApp){ isSuccess in
                                     authenticationRegister.updateValidation(success: isSuccess)
                                 }
                             }, label: {
-                                Text("ログイン").foregroundColor(.white)
+                                Text(R.string.localizable.string_button_register_screen_register()).foregroundColor(.white)
                                     .font(.system(size: 16))
+                                    .frame(
+                                        minWidth: 0,
+                                        maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center
+                                    )
                             })
                             .padding(.trailing, 0)
                             .frame(width: geometry.size.width - 40, height: 40)
@@ -68,20 +73,12 @@ struct RegisterView: View {
                         .frame(width: geometry.size.width - 40)
                         .padding(.top, 10)
                     }
-                    
-                   
                 }
                 .padding(.top, 10)
-                
-                if registerVM.iSShowProgressView {
-                    LoadingView()
-                        .background(Color.white)
-                        .opacity(0.5)
-                }
             }
             .frame(height: geometry.size.height)
         }
-        .disabled(registerVM.iSShowProgressView)
+        .disabled(progressApp.isShowProgressView)
         .alert(item: $registerVM.error) { error in
             Alert(title: Text("Register Error"), message: Text(error.localizedDescription))
         }

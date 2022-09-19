@@ -15,7 +15,6 @@ struct LoginCredentials: Codable {
 final class LoginViewModel: ObservableObject {
     
     @Published var credentials = LoginCredentials()
-    @Published var isShowProgressView = false
     @Published var error: AuthenticationLogin.AuthenticationLoginError?
     @Published var userData: UserLogin?
     

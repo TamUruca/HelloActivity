@@ -17,7 +17,6 @@ struct RegisterCredentials: Codable {
 
 class RegisterViewModel: ObservableObject {
     @Published var credentials = RegisterCredentials()
-    @Published var iSShowProgressView = false
     @Published var error: AuthenticationRegister.AuthenticationRegisterError?
     
     var registerDisabled: Bool {
@@ -25,19 +24,21 @@ class RegisterViewModel: ObservableObject {
     }
     
     // MARK: - Call API
-    func postRegister(completion: @escaping (Bool) -> Void) {
-        ApiManager.shareInstance.postAPIRegister(credentials: credentials, success: { [weak self] (isSuccess, data) in
+    func postRegister(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
+        progressApp.isShowProgressView = true
+        ApiManager.shareInstance.postAPIRegister(credentials: credentials, success: { (isSuccess, data) in
+            progressApp.isShowProgressView = true
             guard isSuccess else {
                 completion(false)
                 return
             }
-            self?.iSShowProgressView = true
             completion(isSuccess)
         }, failured: { [weak self] (message) in
-            self?.iSShowProgressView = false
-            self?.error = .errorAPI(error: message)
-//            error = .invalidaCredentials
-            completion(false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                progressApp.isShowProgressView = false
+                self?.error = .errorAPI(error: message)
+                completion(false)
+            }
         })
         
     }

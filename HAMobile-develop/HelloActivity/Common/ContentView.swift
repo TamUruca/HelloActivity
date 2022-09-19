@@ -46,6 +46,7 @@ struct ContentView: View {
                 RegisterView(tabbarRouter: tabbarRouter)
                     .environmentObject(tabbarRouter)
                     .environmentObject(authenticationRegister)
+                    .environmentObject(progressApp)
             }
         }
         

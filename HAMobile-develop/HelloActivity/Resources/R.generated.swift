@@ -186,8 +186,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 11 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 23 localization keys.
     struct localizable {
+      /// en translation: Email address
+      ///
+      /// Locales: en, ja
+      static let label_email_address_screen_register = Rswift.StringResource(key: "label_email_address_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: Facebookでログイン
       ///
       /// Locales: en, ja
@@ -200,6 +204,46 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_button_line_screen_login = Rswift.StringResource(key: "string_button_line_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Name
+      ///
+      /// Locales: en, ja
+      static let label_name_screen_register = Rswift.StringResource(key: "label_name_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Nick name
+      ///
+      /// Locales: en, ja
+      static let label_nick_name_screen_register = Rswift.StringResource(key: "label_nick_name_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Password
+      ///
+      /// Locales: en, ja
+      static let label_password_screen_register = Rswift.StringResource(key: "label_password_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Register
+      ///
+      /// Locales: en, ja
+      static let string_button_register_screen_register = Rswift.StringResource(key: "string_button_register_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Your email
+      ///
+      /// Locales: en, ja
+      static let label_your_email_screen_register = Rswift.StringResource(key: "label_your_email_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: enter email address...
+      ///
+      /// Locales: en, ja
+      static let hint_email_address_screen_register = Rswift.StringResource(key: "hint_email_address_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: enter name...
+      ///
+      /// Locales: en, ja
+      static let hint_name_screen_register = Rswift.StringResource(key: "hint_name_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: enter nick name...
+      ///
+      /// Locales: en, ja
+      static let hint_nick_name_screen_register = Rswift.StringResource(key: "hint_nick_name_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: enter password...
+      ///
+      /// Locales: en, ja
+      static let hint_password_screen_register = Rswift.StringResource(key: "hint_password_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: enter your name...
+      ///
+      /// Locales: en, ja
+      static let hint_your_email_screen_register = Rswift.StringResource(key: "hint_your_email_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: please enter password!
       ///
       /// Locales: en, ja
@@ -228,10 +272,29 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let title_screen_login = Rswift.StringResource(key: "title_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: ログイン
+      ///
+      /// Locales: en, ja
+      static let title_screen_register = Rswift.StringResource(key: "title_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 新規会員登録
       ///
       /// Locales: en, ja
       static let string_button_register_screen_login = Rswift.StringResource(key: "string_button_register_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+
+      /// en translation: Email address
+      ///
+      /// Locales: en, ja
+      static func label_email_address_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("label_email_address_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "label_email_address_screen_register"
+        }
+
+        return NSLocalizedString("label_email_address_screen_register", bundle: bundle, comment: "")
+      }
 
       /// en translation: Facebookでログイン
       ///
@@ -276,6 +339,156 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_button_line_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Name
+      ///
+      /// Locales: en, ja
+      static func label_name_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("label_name_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "label_name_screen_register"
+        }
+
+        return NSLocalizedString("label_name_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Nick name
+      ///
+      /// Locales: en, ja
+      static func label_nick_name_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("label_nick_name_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "label_nick_name_screen_register"
+        }
+
+        return NSLocalizedString("label_nick_name_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Password
+      ///
+      /// Locales: en, ja
+      static func label_password_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("label_password_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "label_password_screen_register"
+        }
+
+        return NSLocalizedString("label_password_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Register
+      ///
+      /// Locales: en, ja
+      static func string_button_register_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_register_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_register_screen_register"
+        }
+
+        return NSLocalizedString("string_button_register_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Your email
+      ///
+      /// Locales: en, ja
+      static func label_your_email_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("label_your_email_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "label_your_email_screen_register"
+        }
+
+        return NSLocalizedString("label_your_email_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: enter email address...
+      ///
+      /// Locales: en, ja
+      static func hint_email_address_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("hint_email_address_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "hint_email_address_screen_register"
+        }
+
+        return NSLocalizedString("hint_email_address_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: enter name...
+      ///
+      /// Locales: en, ja
+      static func hint_name_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("hint_name_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "hint_name_screen_register"
+        }
+
+        return NSLocalizedString("hint_name_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: enter nick name...
+      ///
+      /// Locales: en, ja
+      static func hint_nick_name_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("hint_nick_name_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "hint_nick_name_screen_register"
+        }
+
+        return NSLocalizedString("hint_nick_name_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: enter password...
+      ///
+      /// Locales: en, ja
+      static func hint_password_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("hint_password_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "hint_password_screen_register"
+        }
+
+        return NSLocalizedString("hint_password_screen_register", bundle: bundle, comment: "")
+      }
+
+      /// en translation: enter your name...
+      ///
+      /// Locales: en, ja
+      static func hint_your_email_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("hint_your_email_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "hint_your_email_screen_register"
+        }
+
+        return NSLocalizedString("hint_your_email_screen_register", bundle: bundle, comment: "")
       }
 
       /// en translation: please enter password!
@@ -381,6 +594,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("title_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: ログイン
+      ///
+      /// Locales: en, ja
+      static func title_screen_register(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("title_screen_register", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "title_screen_register"
+        }
+
+        return NSLocalizedString("title_screen_register", bundle: bundle, comment: "")
       }
 
       /// en translation: 新規会員登録

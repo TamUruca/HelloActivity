@@ -1,12 +1,12 @@
 //
-//  TourItem.swift
+//  ActivityItem.swift
 //  HelloActivity
 //
 //  Created by mac2 on 2022/09/14.
 //
 import SwiftUI
 
-struct TourItem: Hashable, Codable{
+struct ActivityItem: Hashable, Codable{
 //    let areaId: String?
     let areaName: String
 //    let supplierId: String?

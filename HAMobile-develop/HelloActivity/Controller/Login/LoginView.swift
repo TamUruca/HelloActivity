@@ -18,9 +18,7 @@ enum TypeButton {
 }
 
 struct LoginView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    var loginVM: LoginViewModel = LoginViewModel()
+    @StateObject private var loginVM: LoginViewModel = LoginViewModel()
     @State private var isError: Bool = false
     @State private var error: String = ""
     @ObservedObject var tabbarRouter: TabBarRouter
@@ -40,7 +38,7 @@ struct LoginView: View {
                             .padding(.top, 0)
                         
                         // email
-                        TextField(R.string.localizable.hint_username_screen_login(), text: $username)
+                        TextField(R.string.localizable.hint_username_screen_login(), text: $loginVM.credentials.email)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
@@ -64,7 +62,7 @@ struct LoginView: View {
                         .frame(width: geometry.size.width - 40, height: 40)
                         
                         //password
-                        SecureTextField(text: $password)
+                        SecureTextField(text: $loginVM.credentials.password)
                         
                         // forgot password
                         HStack(alignment: .top, spacing: 10){
@@ -85,13 +83,13 @@ struct LoginView: View {
                         HStack(alignment: .top, spacing: 10){
                             Button(action: {
                                 
-                                if username.isEmpty {
+                                if loginVM.credentials.email.isEmpty {
                                     isError = true
                                     error = R.string.localizable.error_empty_username_screen_login()
                                     return
                                 }
                                 
-                                if password.isEmpty {
+                                if loginVM.credentials.password.isEmpty {
                                     isError = true
                                     error = R.string.localizable.error_empty_password_screen_login()
                                     return
@@ -198,7 +196,7 @@ struct LoginView: View {
                 if !result!.isCancelled {
                     //login success facebook
                     loggedFB = true
-                    print(result?.token?.tokenString as Any)
+                    dataRegisterSocial = DataRegisterSocial(type: "facebook", token: result?.token?.tokenString ?? "")
                     tabbarRouter.currentPage = .newRegister
                 }
             }
@@ -215,7 +213,8 @@ struct LoginView: View {
                 }
                 // ucceeded
                 loggedGoogle = true
-                print("success: \(signInUser.authentication.refreshToken)")
+                dataRegisterSocial = DataRegisterSocial(type: "google", token: signInUser.authentication.refreshToken)
+                tabbarRouter.currentPage = .newRegister
             }
     }
     
@@ -226,7 +225,8 @@ struct LoginView: View {
             result in
             switch result {
             case .success(let loginResult):
-                print(loginResult)
+                dataRegisterSocial = DataRegisterSocial(type: "line", token: loginResult.accessToken.value)
+                tabbarRouter.currentPage = .newRegister
             case .failure(let error):
                 print(error)
             }

@@ -25,13 +25,13 @@ final class LoginViewModel: ObservableObject {
     // MARK: - Call API
     func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
-        ApiManager.shareInstance.postAPILogin( credentials: credentials, success: { (isSuccess, data) in
+        ApiManager.shareInstance.postAPILogin(credentials: credentials, success: { [weak self] (isSuccess, data) in
             progressApp.isShowProgressView = false
             guard isSuccess else {
                 completion(false)
                 return
             }
-            
+            self?.userData = data
             completion(isSuccess)
         }, failured: { [weak self] (message) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

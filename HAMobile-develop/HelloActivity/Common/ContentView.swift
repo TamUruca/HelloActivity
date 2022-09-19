@@ -13,43 +13,43 @@ struct ContentView: View {
     @StateObject var authenticationRegister = AuthenticationRegister()
     @StateObject var progressApp = ProgressApp()
     
-        @State var isShowPopUp = false
+    @State var isShowPopUp = false
+    
+    @State var name = ""
+    
+    @State var menuOpen: Bool = false
+    
+    @State var colorToUpdate = Color.gray
+    
+    @State var token = ""
+    
+    @ViewBuilder var contentView: some View {
         
-        @State var name = ""
-    
-        @State var menuOpen: Bool = false
-    
-        @State var colorToUpdate = Color.gray
-    
-        @State var token = ""
-            
-        @ViewBuilder var contentView: some View {
-            
-            switch tabbarRouter.currentPage {
-            case .home:
-                HomeView(name: $name).environmentObject(tabbarRouter)
-            case .job:
-                JobView().environmentObject(tabbarRouter)
-            case .chat:
-                ChatView().environmentObject(tabbarRouter)
-            case .profile:
-                ProfileView().environmentObject(tabbarRouter)
-            case .setting:
-                SettingView().environmentObject(tabbarRouter)
-            case .notification:
-                NotificationView().environmentObject(tabbarRouter)
-            case .login:
-                LoginView(tabbarRouter: tabbarRouter)
-                    .environmentObject(tabbarRouter)
-                    .environmentObject(progressApp)
-            case .newRegister:
-                RegisterView(tabbarRouter: tabbarRouter)
-                    .environmentObject(tabbarRouter)
-                    .environmentObject(authenticationRegister)
-                    .environmentObject(progressApp)
-            }
+        switch tabbarRouter.currentPage {
+        case .home:
+            HomeView(name: $name).environmentObject(tabbarRouter)
+        case .job:
+            JobView().environmentObject(tabbarRouter)
+        case .chat:
+            ChatView().environmentObject(tabbarRouter)
+        case .profile:
+            ProfileView().environmentObject(tabbarRouter)
+        case .setting:
+            SettingView().environmentObject(tabbarRouter)
+        case .notification:
+            NotificationView().environmentObject(tabbarRouter)
+        case .login:
+            LoginView(tabbarRouter: tabbarRouter)
+                .environmentObject(tabbarRouter)
+                .environmentObject(progressApp)
+        case .newRegister:
+            RegisterView(tabbarRouter: tabbarRouter)
+                .environmentObject(tabbarRouter)
+                .environmentObject(authenticationRegister)
+                .environmentObject(progressApp)
         }
-        
+    }
+    
     fileprivate func showMainView(_ geometry: GeometryProxy) -> some View {
         return VStack(spacing: 0) {
             
@@ -110,7 +110,7 @@ struct ContentView: View {
                     FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "homekit", tabName: "[TOP]", tabbarRouter: tabbarRouter, assignedPage: .home)
                     FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "case", tabName: "Case", tabbarRouter: tabbarRouter, assignedPage: .job)
                     FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "envelope", tabName: "[受信トレイ]", tabbarRouter: tabbarRouter, assignedPage: .chat)
-                    FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "person", tabName: "[マイページ]", tabbarRouter: tabbarRouter, assignedPage: UserDefaults.standard.string(forKey: "token")?.isEmpty ?? true ? .login : .profile)
+                    FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "person", tabName: "[マイページ]", tabbarRouter: tabbarRouter, assignedPage: checkLogin())
                     FxTabItem(width: geometry.size.width/5, height: geometry.size.height/30, systemIconName: "gearshape", tabName: "[設定]", tabbarRouter: tabbarRouter, assignedPage: .setting)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height/10)
@@ -122,33 +122,45 @@ struct ContentView: View {
     
     var body: some View {
         
-            GeometryReader { geometry in
+        GeometryReader { geometry in
+            
+            ZStack {
+                showMainView(geometry)
                 
-                ZStack {
-                    showMainView(geometry)
-                    
-                    if progressApp.isShowProgressView {
-                        LoadingView()
-                            .background(Color.white)
-                            .opacity(0.5)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
+                if progressApp.isShowProgressView {
+                    LoadingView()
+                        .background(Color.white)
+                        .opacity(0.5)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                SideMenu(
-                    width: geometry.size.width*0.8,
-                    isOpen: self.menuOpen,
-                    menuClose: self.openMenu
-                )
             }
-            .onAppear {
-                UserDefaults.standard.removeObject(forKey: "token")
+            SideMenu(
+                width: geometry.size.width*0.8,
+                isOpen: self.menuOpen,
+                menuClose: self.openMenu
+            )
+        }
+        .onAppear {
+            UserDefaults.standard.removeObject(forKey: "token")
+        }
+    }
+    
+    func openMenu() {
+        self.menuOpen.toggle()
+    }
+    
+    func checkLogin() -> Page {
+        if  let token = UserDefaults.standard.string(forKey: "token"), !token.isEmpty {
+            return .profile
+        } else {
+            if let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue), !dataSocial.token.isEmpty {
+                return .newRegister
+            } else {
+                return .login
             }
         }
-    
-        func openMenu() {
-           self.menuOpen.toggle()
-       }
     }
+}
 
     struct MyTabBar_Previews: PreviewProvider {
         static var previews: some View {

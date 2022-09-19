@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+var dataRegisterSocial: DataRegisterSocial = DataRegisterSocial(type: "", token: "") {
+    didSet {
+        UserDefaults.standard.save(customObject: dataRegisterSocial, inKey: UserDefaultsKeys.loginSocial.rawValue)
+    }
+}
+
+
 struct RegisterView: View {
 
     @ObservedObject var tabbarRouter: TabBarRouter
@@ -54,7 +61,10 @@ struct RegisterView: View {
                             Button(action: {
                                 // register
                                 registerVM.postRegister(progressApp: progressApp){ isSuccess in
-                                    authenticationRegister.updateValidation(success: isSuccess)
+//                                    authenticationRegister.updateValidation(success: isSuccess)
+                                    if isSuccess {
+                                        tabbarRouter.currentPage = .profile
+                                    }
                                 }
                             }, label: {
                                 Text(R.string.localizable.string_button_register_screen_register()).foregroundColor(.white)

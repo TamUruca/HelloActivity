@@ -57,6 +57,7 @@
 		FD99E76028D8016500116D23 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E75F28D8016500116D23 /* R.generated.swift */; };
 		FD99E76328D8102700116D23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD99E76528D8102700116D23 /* Localizable.strings */; };
 		FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E76828D8261300116D23 /* ProgressApp.swift */; };
+		FD99E76D28D8722800116D23 /* UserDefault+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E76C28D8722800116D23 /* UserDefault+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		FD99E76428D8102700116D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD99E76628D8102E00116D23 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD99E76828D8261300116D23 /* ProgressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressApp.swift; sourceTree = "<group>"; };
+		FD99E76C28D8722800116D23 /* UserDefault+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				04F3906428D490D7002D92BA /* View+Extensions.swift */,
+				FD99E76C28D8722800116D23 /* UserDefault+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				04F3904828D49034002D92BA /* APIClient.swift in Sources */,
 				04F3904328D49014002D92BA /* BaseViewModel.swift in Sources */,
 				049D401928BDE40C00606A0E /* SettingView.swift in Sources */,
+				FD99E76D28D8722800116D23 /* UserDefault+Extensions.swift in Sources */,
 				04F3906028D490A1002D92BA /* AuthenticationRegister.swift in Sources */,
 				04F3906528D490D7002D92BA /* View+Extensions.swift in Sources */,
 				0493B3DF28CF3E700086B816 /* CategoryItem.swift in Sources */,

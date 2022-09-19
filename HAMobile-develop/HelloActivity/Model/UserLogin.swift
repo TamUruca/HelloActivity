@@ -9,24 +9,35 @@ import Foundation
 
 class UserLogin {
     
-    var nameJP: String
-    var name: String
-    var notificationUnreadCount: Int
-    var userID: Int
-    var messageUnreadCount: Int
-    var reservationRelateUnreadNum: Int
-    var haNewsUnreadNum: Int
+    var user: User
     var token: String
     
+    init(dic: [String: Any]) {
+        self.user = User.init(dic: dic["user"] as? [String: Any] ?? [:])
+        self.token = dic["token"] as? String ?? ""
+    }
+}
+
+class User {
+    var nameJP: String
+    var name: String
+    var chatUred: Int
     
     init(dic: [String: Any]) {
         self.nameJP = dic["name_jp"] as? String ?? ""
+        self.chatUred = dic["chat_unread"] as? Int ?? 0
         self.name = dic["name"] as? String ?? ""
-        self.notificationUnreadCount = dic["notification_unread_count"] as? Int ?? 0
-        self.userID = dic["user_id"] as? Int ?? 0
-        self.messageUnreadCount = dic["message_unread_count"] as? Int ?? 0
-        self.reservationRelateUnreadNum = dic["reservationRelatedUnreadNum"] as? Int ?? 0
-        self.haNewsUnreadNum = dic["haNewsUnreadNum"] as? Int ?? 0
-        self.token = dic["token"] as? String ?? ""
+    }
+}
+
+
+
+class DataRegisterSocial: Codable {
+    var type: String = ""
+    var token: String = ""
+    
+    init(type: String, token: String) {
+        self.type = type
+        self.token = token
     }
 }

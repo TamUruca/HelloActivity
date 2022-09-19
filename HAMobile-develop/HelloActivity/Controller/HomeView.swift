@@ -17,24 +17,24 @@ struct HomeView: View {
         BannerTab()
     }
     
-    @ViewBuilder var listTourPromotion: some View {
-        ListTourPromotion()
+    @ViewBuilder var listActivityPromotion: some View {
+        ListActivityPromotion()
     }
     
-    @ViewBuilder var listTourArea: some View {
-        ListTourArea()
+    @ViewBuilder var listActivityArea: some View {
+        ListActivityArea()
     }
     
-    @ViewBuilder var listTourTrending: some View {
-        ListTourTrending()
+    @ViewBuilder var listActivityTrending: some View {
+        ListActivityTrending()
     }
     
-    @ViewBuilder var listTourNew: some View {
-        ListTourNew()
+    @ViewBuilder var listActivityNew: some View {
+        ListActivityNew()
     }
     
-    @ViewBuilder var listTourFavorite: some View {
-        ListTourFavorite()
+    @ViewBuilder var listActivityFavorite: some View {
+        ListActivityFavorite()
     }
     
     @State var currentFill = 0
@@ -96,23 +96,23 @@ struct HomeView: View {
 //                        .offset(x: currentFill == 0 ? 0 : -geometry.size.width)
 //                        .animation(Animation.easeIn.delay(0.1))
                     
-                    listTourPromotion
+                    listActivityPromotion
                         .opacity(currentFill == 1 ? 1 : 0)
 //                        .offset(x: currentFill == 1 ? 0 : -geometry.size.width)
 //                        .animation(Animation.easeIn.delay(0.1))
                     
-                    listTourArea
+                    listActivityArea
                         .opacity(currentFill == 2 ? 1 : 0)
 //                        .offset(x: currentFill == 2 ? 0 : -geometry.size.width)
 //                        .animation(Animation.easeIn.delay(0.1))
                     
-                    listTourTrending
+                    listActivityTrending
                         .opacity(currentFill == 3 ? 1 : 0)
                     
-                    listTourNew
+                    listActivityNew
                         .opacity(currentFill == 4 ? 1 : 0)
                     
-                    listTourFavorite
+                    listActivityFavorite
                         .opacity(currentFill == 5 ? 1 : 0)
                     
                 }

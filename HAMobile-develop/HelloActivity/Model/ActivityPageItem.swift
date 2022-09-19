@@ -1,5 +1,5 @@
 //
-//  TourPageItem.swift
+//  ActivityPageItem.swift
 //  HelloActivity
 //
 //  Created by mac2 on 2022/09/14.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - TourPageItem
-struct TourPageItem: Codable {
-    var activities: [TourItem]?
+// MARK: - ActivityPageItem
+struct ActivityPageItem: Codable {
+    var activities: [ActivityItem]?
     var areas: [AreaItem]?
     var count: Int
     var currentPage: String
@@ -19,7 +19,7 @@ struct TourPageItem: Codable {
         case currentPage = "current_page"
     }
     
-    init(activities: [TourItem], count: Int, currentPage: String) {
+    init(activities: [ActivityItem], count: Int, currentPage: String) {
         self.activities = activities
         self.count = count
         self.currentPage = currentPage

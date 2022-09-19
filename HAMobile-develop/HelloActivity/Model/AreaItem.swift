@@ -10,7 +10,7 @@ import Foundation
 // MARK: - AreaItem
 struct AreaItem: Hashable, Codable {
     let areaName: String
-    let activities: [TourItem]
+    let activities: [ActivityItem]
 
     enum CodingKeys: String, CodingKey {
         case activities

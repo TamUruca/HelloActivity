@@ -1,0 +1,6 @@
+framework module Pods_HelloActivity {
+  umbrella header "Pods-HelloActivity-umbrella.h"
+
+  export *
+  module * { export * }
+}

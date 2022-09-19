@@ -55,6 +55,7 @@
 		A7DD615638CBC2BB280E3A7D /* Pods_HelloActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */; };
 		B5E19EB628D68D1A008BCEB7 /* AuthenticationLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E19EB528D68D1A008BCEB7 /* AuthenticationLogin.swift */; };
 		FD99E76028D8016500116D23 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E75F28D8016500116D23 /* R.generated.swift */; };
+		FD99E76328D8102700116D23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD99E76528D8102700116D23 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		F5726FB04EBD7328E78841CD /* Pods-HelloActivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.release.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.release.xcconfig"; sourceTree = "<group>"; };
 		FCD60DE54D92D0F128430D42 /* Pods-HelloActivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.debug.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.debug.xcconfig"; sourceTree = "<group>"; };
 		FD99E75F28D8016500116D23 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		FD99E76428D8102700116D23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FD99E76628D8102E00116D23 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +384,7 @@
 			children = (
 				04A47BFA28B8C92D0017B26E /* Assets.xcassets */,
 				FD99E75F28D8016500116D23 /* R.generated.swift */,
+				FD99E76528D8102700116D23 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -475,6 +479,7 @@
 				en,
 				Base,
 				ja,
+				"ja-JP",
 			);
 			mainGroup = 04A47BEA28B8C92B0017B26E;
 			productRefGroup = 04A47BF428B8C92B0017B26E /* Products */;
@@ -494,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A47BFE28B8C92D0017B26E /* Preview Assets.xcassets in Resources */,
+				FD99E76328D8102700116D23 /* Localizable.strings in Resources */,
 				04A47BFB28B8C92D0017B26E /* Assets.xcassets in Resources */,
 				049D400728BC526C00606A0E /* CollectionViewCell.xib in Resources */,
 			);
@@ -657,6 +663,18 @@
 			targetProxy = 04A47C0E28B8C92D0017B26E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FD99E76528D8102700116D23 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD99E76428D8102700116D23 /* en */,
+				FD99E76628D8102E00116D23 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04A47C1528B8C92D0017B26E /* Debug */ = {

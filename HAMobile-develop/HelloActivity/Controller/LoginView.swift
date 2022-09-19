@@ -34,11 +34,12 @@ struct LoginView: View {
             ZStack {
                 ScrollView (.vertical, showsIndicators: false) {
                     VStack {
-                        Text("ログイン")
+                        Text(R.string.localizable.title_screen_login())
                             .font(.largeTitle)
                             .padding(.top, 0)
+                        
                         // email
-                        TextField("メールアドレス", text: $username)
+                        TextField(R.string.localizable.hint_username_screen_login(), text: $username)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
@@ -68,7 +69,7 @@ struct LoginView: View {
                             Button(action: {
                                 // do something
                             }, label: {
-                                Text("パスワードを忘れた方").foregroundColor(.blue)
+                                Text(R.string.localizable.string_forgot_password_screen_login()).foregroundColor(.blue)
                                     .font(.system(size: 12))
                             })
                             .padding(.trailing, 0)
@@ -118,7 +119,7 @@ struct LoginView: View {
 //                                    }
 //                                })
                             }, label: {
-                                Text("ログイン").foregroundColor(.white)
+                                Text(R.string.localizable.string_button_login_screen_login()).foregroundColor(.white)
                                     .font(.system(size: 16))
                             })
                             .padding(.trailing, 0)
@@ -135,7 +136,7 @@ struct LoginView: View {
                             Button(action: {
                                 // do something
                             }, label: {
-                                Text("新規会員登録").foregroundColor(.white)
+                                Text(R.string.localizable.string_button_register_screen_login()).foregroundColor(.white)
                                     .font(.system(size: 16))
                             })
                             .padding(.trailing, 0)
@@ -252,7 +253,7 @@ struct LoginView: View {
                     Image(systemName: "case")
                         .foregroundColor(.red)
                         .padding(.leading, 10)
-                    Text("Facebook")
+                    Text(R.string.localizable.string_button_facbook_screen_login())
                         .frame(
                             minWidth: (geometry.size.width / 2) - 25,
                             maxWidth: .infinity, minHeight: 44, alignment: .leading
@@ -271,7 +272,7 @@ struct LoginView: View {
                     Image(systemName: "case")
                         .foregroundColor(.red)
                         .padding(.leading, 10)
-                    Text("Google")
+                    Text(R.string.localizable.string_button_google_screen_login())
                         .frame(
                             minWidth: (geometry.size.width / 2) - 25,
                             maxWidth: .infinity, minHeight: 44, alignment: .leading
@@ -290,7 +291,7 @@ struct LoginView: View {
                     Image(systemName: "case")
                         .foregroundColor(.red)
                         .padding(.leading, 10)
-                    Text("Line")
+                    Text(R.string.localizable.string_button_line_screen_login())
                         .frame(
                             minWidth: (geometry.size.width / 2) - 25,
                             maxWidth: .infinity, minHeight: 44, alignment: .leading
@@ -321,7 +322,7 @@ struct SecureTextField: View {
         ZStack {
             HStack {
                 if isSecureField {
-                    SecureField("メールアドレス", text: $text)
+                    SecureField(R.string.localizable.hint_password_screen_login(), text: $text)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)

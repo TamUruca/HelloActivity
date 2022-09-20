@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+typealias RequestCompletion = ((_ success: Bool, _ IsFailResponseError: Bool, _ data: Any?) -> (Void))?
+
 enum TypeContentHeader {
     case json
     case urlncoded
@@ -147,53 +149,100 @@ class ApiManager {
             "Accept": "application/json",
             "Content-Type": typeContentHeader.stringDescription ]
     }
+    
+    private func getDefaultHeaderTypeJSON() -> HTTPHeaders {
+        var headers = HTTPHeaders()
+//        headers["Content-Type"] = "application/json; charset=UTF-8"
+        if let accessToken = UserDefaultUtils.shared.get(key: UserDefaultsKeys.token) {
+            headers["Authorization"] = "Bearer " + (accessToken as? String ?? "")
+//            headers["X-ApiToken"] = accessToken
+        }
+//        headers["Accept"] = "application/vnd.api+json"
+        
+        return headers
+    }
 }
 
 // MARK: - Login and authen
 extension ApiManager {
     
-    public func postAPILogin(credentials: LoginCredentials,
-                             success: @escaping Successs<UserLogin>,
-                             failured: @escaping Failured) {
-        if !Reachability.shared.isConnectedToInternet {
-            failured(R.string.localizable.error_network())
-            return
-        }
-        let deviceID = UIDevice.current.identifierForVendor!.uuidString
-        let parameters: Parameters = ["email": credentials.email, "password": credentials.password, "device_id": deviceID]
-        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
-            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
-        }
+    public func requestAPIJSON(api: ClientApi, parameters: [String : Any]? = nil, headers: HTTPHeaders? = nil, encoding: ParameterEncoding? = nil, completion: RequestCompletion) {
+        let url = api.baseURL + api.path
+
+        let finalHeaders: HTTPHeaders = {
+            if let headers = headers {
+                return headers
+            }
+            return getDefaultHeaderTypeJSON()
+        }()
+        let finalEncoding: ParameterEncoding = {
+            if let encoding = encoding {
+                return encoding
+            }
+            return JSONEncoding.prettyPrinted
+        }()
+        
+        sessionManager.request(url, method: api.method, parameters: parameters, encoding: finalEncoding, headers: finalHeaders).cURLDescription(calling: { (curl) in
+            print(curl)
+        })
+        .responseJSON(completionHandler: { (response) in
+            let statusCode = response.response?.statusCode
+            switch response.result {
+            case .success(let data):
+                switch statusCode {
+                case 200:
+                    completion?(true, false, data)
+                default:
+                    completion?(false, false, data)
+                }
+            case .failure(_):
+                completion?(false, true, R.string.localizable.error_network())
+            }
+        })
     }
     
-    public func postAPIRegister(credentials: RegisterCredentials,
-                             success: @escaping Successs<UserLogin>,
-                             failured: @escaping Failured) {
-        if !Reachability.shared.isConnectedToInternet {
-            failured(R.string.localizable.error_network())
-            return
-        }
-        
-        var parameters: Parameters = ["name_jp": credentials.yourName, "name": credentials.name, "nick_name": credentials.nickName, "email": credentials.emailAddress, "password": credentials.password, "magazine_accepted": 0]
-        let dataSocial = UserDefaultUtils.shared.get(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial)
-        
-        switch dataSocial?.type {
-        case "Facebook":
-            parameters["social_facebook"] = dataSocial?.token
-        case "Google":
-            parameters["social_google"] = dataSocial?.token
-        case "Line":
-            parameters["social_line"] = dataSocial?.token
-        case "Yahoo":
-            parameters["social_yahoo"] = dataSocial?.token
-        default:
-            break
-        }
-        
-        sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .urlncoded) ).responseJSON { (response) in
-            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
-        }
-    }
+//    public func postAPILogin(credentials: LoginCredentials,
+//                             success: @escaping Successs<UserLogin>,
+//                             failured: @escaping Failured) {
+//        if !Reachability.shared.isConnectedToInternet {
+//            failured(R.string.localizable.error_network())
+//            return
+//        }
+//        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+//        let parameters: Parameters = ["email": credentials.email, "password": credentials.password, "device_id": deviceID]
+//        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
+//            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
+//        }
+//    }
+    
+//    public func postAPIRegister(credentials: RegisterCredentials,
+//                             success: @escaping Successs<UserLogin>,
+//                             failured: @escaping Failured) {
+//        if !Reachability.shared.isConnectedToInternet {
+//            failured(R.string.localizable.error_network())
+//            return
+//        }
+//        
+//        var parameters: Parameters = ["name_jp": credentials.yourName, "name": credentials.name, "nick_name": credentials.nickName, "email": credentials.emailAddress, "password": credentials.password, "magazine_accepted": 0]
+//        let dataSocial = UserDefaultUtils.shared.get(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial)
+//        
+//        switch dataSocial?.type {
+//        case "Facebook":
+//            parameters["social_facebook"] = dataSocial?.token
+//        case "Google":
+//            parameters["social_google"] = dataSocial?.token
+//        case "Line":
+//            parameters["social_line"] = dataSocial?.token
+//        case "Yahoo":
+//            parameters["social_yahoo"] = dataSocial?.token
+//        default:
+//            break
+//        }
+//        
+//        sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .urlncoded) ).responseJSON { (response) in
+//            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
+//        }
+//    }
 }
 
 extension ApiManager {
@@ -223,13 +272,9 @@ extension ApiManager {
         
         switch typeAPI {
         case .login:
-            let data = UserLogin(dic: json)
-            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
-            success(true, data as? T)
+            break
         case .register:
-            let data = UserLogin(dic: json)
-            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
-            success(true, data as? T)
+           break
         }
     }
     

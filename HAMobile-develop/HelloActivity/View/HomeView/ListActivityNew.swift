@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct ListActivityNew: View {
     
     let activitiesList = ActivityPageItem(areas: [
-        AreaItem(areaName: "Hawaii", activities: [
+        AreaData(name: "Hawaii", activities: [
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
@@ -22,7 +22,7 @@ struct ListActivityNew: View {
 
         ]),
         
-        AreaItem(areaName: "Hawaii", activities: [
+        AreaData(name: "Hawaii", activities: [
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
@@ -32,16 +32,16 @@ struct ListActivityNew: View {
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
         ]),
         
-        AreaItem(areaName: "Hawaii", activities: [
+        AreaData(name: "Hawaii", activities: [
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
         ]),
         
-        AreaItem(areaName: "Hawaii", activities: [
+        AreaData(name: "Hawaii", activities: [
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
         ]),
         
-        AreaItem(areaName: "Hawaii", activities: [
+        AreaData(name: "Hawaii", activities: [
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
             ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
         ])
@@ -65,7 +65,7 @@ struct ListActivityNew: View {
                 ForEach(self.activitiesList.areas ?? [], id: \.self) { area in
                     VStack(alignment: .leading) {
                         VStack {
-                            Text(area.areaName).bold() +
+                            Text(area.name ?? "").bold() +
                             Text(" / ハワイ")
                                 .font(
                                     .system(size: 12)
@@ -75,14 +75,14 @@ struct ListActivityNew: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 20) {
-                                ForEach(area.activities, id: \.self) { activity in
+                                ForEach(area.activities ?? [], id: \.self) { activity in
                                     VStack(alignment: .leading) {
                                         WebImage(url: URL(string: activity.displayImages))
                                             .resizable()
                                             .aspectRatio(1, contentMode: .fit)
                                             .cornerRadius(10)
                                         
-                                        Text("\(area.areaName)、 ハワイ/ホノルル")
+                                        Text("\(area.name ?? "")、 ハワイ/ホノルル")
                                             .foregroundColor(.gray)
                                             .font(
                                                 .system(size: 12)

@@ -10,7 +10,7 @@ import Foundation
 // MARK: - ActivityPageItem
 struct ActivityPageItem: Codable {
     var activities: [ActivityItem]?
-    var areas: [AreaItem]?
+    var areas: [AreaData]?
     var count: Int
     var currentPage: String
 
@@ -25,7 +25,7 @@ struct ActivityPageItem: Codable {
         self.currentPage = currentPage
     }
     
-    init(areas: [AreaItem], count: Int, currentPage: String) {
+    init(areas: [AreaData], count: Int, currentPage: String) {
         self.areas = areas
         self.count = count
         self.currentPage = currentPage

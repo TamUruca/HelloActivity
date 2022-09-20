@@ -10,29 +10,7 @@ import SDWebImageSwiftUI
 
 struct ListActivityArea: View {
     
-    let activitiesList = ActivityPageItem(activities: [
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-    ], count: 1, currentPage: "1")
+    @StateObject private var activityAreaVM = ActivityAreaViewModel()
     
     var body: some View {
         ScrollView {
@@ -49,27 +27,29 @@ struct ListActivityArea: View {
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 10, trailing: 0))
                 
 //                 Custom Grid View
-                UIGrid(columns: 2, list: activitiesList.activities ?? []) { activity in
+                UIGrid(columns: 2, list: activityAreaVM.areaDatas ?? []) { area in
                     VStack {
-                        WebImage(url: URL(string: activity.displayImages))
+                        WebImage(url: URL(string: area.photo ?? ""))
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
                             .cornerRadius(10)
                         
-                        HStack {
-                            Text(activity.title + "\n")
+                        HStack() {
+                            Text(area.name ?? "")
                                 .font(
                                     .system(size: 18, weight: .semibold)
                                 )
                                 .lineLimit(1)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             
-                            Text("201#")
+                            Text(area.activity_count ?? "")
                                 .font(
                                     .system(size: 12)
                                 )
                                 .foregroundColor(.gray)
                                 .lineLimit(1)
                                 .padding(.leading, 20)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                     }
                 }
@@ -86,6 +66,9 @@ struct ListActivityArea: View {
                     )
                 .padding(.vertical, 20)
             }
+        }
+        .onAppear {
+            activityAreaVM.getListActivityArea()
         }
     }
 }

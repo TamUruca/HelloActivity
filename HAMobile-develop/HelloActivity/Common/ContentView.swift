@@ -138,9 +138,9 @@ struct ContentView: View {
             )
         }
         .onAppear {
-            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.fcmToken)
-            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.loginSocial)
-            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.token)
+//            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.fcmToken)
+//            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.loginSocial)
+//            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.token)
         }
     }
     

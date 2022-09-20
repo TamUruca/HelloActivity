@@ -178,13 +178,13 @@ extension ApiManager {
         let dataSocial = UserDefaultUtils.shared.get(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial)
         
         switch dataSocial?.type {
-        case "facebook":
+        case "Facebook":
             parameters["social_facebook"] = dataSocial?.token
-        case "google":
+        case "Google":
             parameters["social_google"] = dataSocial?.token
-        case "line":
+        case "Line":
             parameters["social_line"] = dataSocial?.token
-        case "yahoo":
+        case "Yahoo":
             parameters["social_yahoo"] = dataSocial?.token
         default:
             break
@@ -202,10 +202,10 @@ extension ApiManager {
         let result = self.chekResponse(response: response)
         if result.0 == 200 {
             
-            if let json = response.value as? [String: Any], let data = json["data"] as? [String: Any] {
+            if let json = response.value as? [String: Any] {
                 let status = json["status"] as? Int ?? 0
                 if status == 200 {
-                    responseTypeAPI(typeAPI: typeAPI, json: data, success: success)
+                    responseTypeAPI(typeAPI: typeAPI, json: json["data"] as? [String: Any] ?? [:], success: success)
                 } else {
                     failured(ErrorRequest.convertData.localizedDescription)
                 }

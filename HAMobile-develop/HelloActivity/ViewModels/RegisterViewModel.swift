@@ -36,7 +36,7 @@ class RegisterViewModel: ObservableObject {
     func postRegister(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
         ApiManager.shareInstance.postAPIRegister(credentials: credentials, success: { [weak self] (isSuccess, data) in
-            progressApp.isShowProgressView = true
+            progressApp.isShowProgressView = false
             guard isSuccess else {
                 completion(false)
                 return

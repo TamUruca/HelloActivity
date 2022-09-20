@@ -29,7 +29,7 @@ class UserDefaultUtils {
         return userDefault.value(forKey: key.rawValue)
     }
     
-    func set<T: Encodable>(customObject object: T, inKey key: UserDefaultsKeys) {
+    func setObject<T: Encodable>(customObject object: T, inKey key: UserDefaultsKeys) {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(object) {
             userDefault.set(encoded, forKey: key.rawValue)

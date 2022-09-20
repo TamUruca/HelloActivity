@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 class TabBarRouter: ObservableObject {
-    @Published var currentPage: Page = .home
-    //
+    @Published var currentPage: Page = .profile
 }
 
 enum Page {

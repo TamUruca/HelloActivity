@@ -208,6 +208,7 @@
 		049D401128BDAC3D00606A0E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FD99E76E28D94E8500116D23 /* Profile */,
 				04F3905328D4906A002D92BA /* Login */,
 				04F3905628D4906A002D92BA /* Register */,
 				049D400E28BDAB9800606A0E /* HomeView.swift */,
@@ -396,6 +397,13 @@
 				FD99E76828D8261300116D23 /* ProgressApp.swift */,
 			);
 			path = ProgressApp;
+			sourceTree = "<group>";
+		};
+		FD99E76E28D94E8500116D23 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

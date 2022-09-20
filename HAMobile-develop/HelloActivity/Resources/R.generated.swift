@@ -186,7 +186,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 24 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 44 localization keys.
     struct localizable {
       /// en translation: Email address
       ///
@@ -252,6 +252,34 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let error_empty_password_screen_login = Rswift.StringResource(key: "error_empty_password_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: お問い合わせ
+      ///
+      /// Locales: en, ja
+      static let string_button_inquiry_screen_profile = Rswift.StringResource(key: "string_button_inquiry_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: お気に入り
+      ///
+      /// Locales: en, ja
+      static let string_button_favorite_screen_profile = Rswift.StringResource(key: "string_button_favorite_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: よくある質問
+      ///
+      /// Locales: en, ja
+      static let string_button_frequenrly_asked_questions_screen_profile = Rswift.StringResource(key: "string_button_frequenrly_asked_questions_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: アカウント
+      ///
+      /// Locales: en, ja
+      static let string_account_screen_profile = Rswift.StringResource(key: "string_account_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: アクティビティ
+      ///
+      /// Locales: en, ja
+      static let string_activity_screen_profile = Rswift.StringResource(key: "string_activity_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: クレジットカード情報
+      ///
+      /// Locales: en, ja
+      static let string_button_credit_cart_information_screen_profile = Rswift.StringResource(key: "string_button_credit_cart_information_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: サポート
+      ///
+      /// Locales: en, ja
+      static let string_support_screen_profile = Rswift.StringResource(key: "string_support_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: パスワード
       ///
       /// Locales: en, ja
@@ -260,14 +288,26 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_forgot_password_screen_login = Rswift.StringResource(key: "string_forgot_password_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: パスワード変更
+      ///
+      /// Locales: en, ja
+      static let string_button_change_password_screen_profile = Rswift.StringResource(key: "string_button_change_password_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: メールアドレス
       ///
       /// Locales: en, ja
       static let hint_username_screen_login = Rswift.StringResource(key: "hint_username_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: メールアドレスの変更
+      ///
+      /// Locales: en, ja
+      static let string_button_email_address_change_screen_profile = Rswift.StringResource(key: "string_button_email_address_change_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: メールアドレスは必須です。
       ///
       /// Locales: en, ja
       static let error_empty_username_screen_login = Rswift.StringResource(key: "error_empty_username_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: ログアウト
+      ///
+      /// Locales: en, ja
+      static let string_button_logout_screen_profile = Rswift.StringResource(key: "string_button_logout_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: ログイン
       ///
       /// Locales: en, ja
@@ -280,10 +320,50 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let title_screen_register = Rswift.StringResource(key: "title_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 会員情報
+      ///
+      /// Locales: en, ja
+      static let string_button_member_information_screen_profile = Rswift.StringResource(key: "string_button_member_information_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 会員情報を表示
+      ///
+      /// Locales: en, ja
+      static let string_view_member_information_screen_profile = Rswift.StringResource(key: "string_view_member_information_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static let string_button_inbox_screen_profile = Rswift.StringResource(key: "string_button_inbox_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static let string_inbox_screen_profile = Rswift.StringResource(key: "string_inbox_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 投稿した口コミ
+      ///
+      /// Locales: en, ja
+      static let string_button_reviews_submited_screen_profile = Rswift.StringResource(key: "string_button_reviews_submited_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 新規会員登録
       ///
       /// Locales: en, ja
       static let string_button_register_screen_login = Rswift.StringResource(key: "string_button_register_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static let string_application_list_screen_profile = Rswift.StringResource(key: "string_application_list_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static let string_button_application_list_screen_profile = Rswift.StringResource(key: "string_button_application_list_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 設定
+      ///
+      /// Locales: en, ja
+      static let string_button_setting_screen_profile = Rswift.StringResource(key: "string_button_setting_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 退会する
+      ///
+      /// Locales: en, ja
+      static let string_button_withdraw_screen_profile = Rswift.StringResource(key: "string_button_withdraw_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 閲覧履歴
+      ///
+      /// Locales: en, ja
+      static let string_button_browsing_history_screen_profile = Rswift.StringResource(key: "string_button_browsing_history_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
 
       /// en translation: Email address
       ///
@@ -525,6 +605,111 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("error_empty_password_screen_login", bundle: bundle, comment: "")
       }
 
+      /// en translation: お問い合わせ
+      ///
+      /// Locales: en, ja
+      static func string_button_inquiry_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_inquiry_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_inquiry_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_inquiry_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: お気に入り
+      ///
+      /// Locales: en, ja
+      static func string_button_favorite_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_favorite_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_favorite_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_favorite_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: よくある質問
+      ///
+      /// Locales: en, ja
+      static func string_button_frequenrly_asked_questions_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_frequenrly_asked_questions_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_frequenrly_asked_questions_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_frequenrly_asked_questions_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: アカウント
+      ///
+      /// Locales: en, ja
+      static func string_account_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_account_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_account_screen_profile"
+        }
+
+        return NSLocalizedString("string_account_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: アクティビティ
+      ///
+      /// Locales: en, ja
+      static func string_activity_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_activity_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_activity_screen_profile"
+        }
+
+        return NSLocalizedString("string_activity_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: クレジットカード情報
+      ///
+      /// Locales: en, ja
+      static func string_button_credit_cart_information_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_credit_cart_information_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_credit_cart_information_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_credit_cart_information_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: サポート
+      ///
+      /// Locales: en, ja
+      static func string_support_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_support_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_support_screen_profile"
+        }
+
+        return NSLocalizedString("string_support_screen_profile", bundle: bundle, comment: "")
+      }
+
       /// en translation: パスワード
       ///
       /// Locales: en, ja
@@ -555,6 +740,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("string_forgot_password_screen_login", bundle: bundle, comment: "")
       }
 
+      /// en translation: パスワード変更
+      ///
+      /// Locales: en, ja
+      static func string_button_change_password_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_change_password_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_change_password_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_change_password_screen_profile", bundle: bundle, comment: "")
+      }
+
       /// en translation: メールアドレス
       ///
       /// Locales: en, ja
@@ -570,6 +770,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("hint_username_screen_login", bundle: bundle, comment: "")
       }
 
+      /// en translation: メールアドレスの変更
+      ///
+      /// Locales: en, ja
+      static func string_button_email_address_change_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_email_address_change_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_email_address_change_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_email_address_change_screen_profile", bundle: bundle, comment: "")
+      }
+
       /// en translation: メールアドレスは必須です。
       ///
       /// Locales: en, ja
@@ -583,6 +798,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("error_empty_username_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: ログアウト
+      ///
+      /// Locales: en, ja
+      static func string_button_logout_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_logout_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_logout_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_logout_screen_profile", bundle: bundle, comment: "")
       }
 
       /// en translation: ログイン
@@ -630,6 +860,81 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("title_screen_register", bundle: bundle, comment: "")
       }
 
+      /// en translation: 会員情報
+      ///
+      /// Locales: en, ja
+      static func string_button_member_information_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_member_information_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_member_information_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_member_information_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 会員情報を表示
+      ///
+      /// Locales: en, ja
+      static func string_view_member_information_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_view_member_information_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_view_member_information_screen_profile"
+        }
+
+        return NSLocalizedString("string_view_member_information_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static func string_button_inbox_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_inbox_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_inbox_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_inbox_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static func string_inbox_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_inbox_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_inbox_screen_profile"
+        }
+
+        return NSLocalizedString("string_inbox_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 投稿した口コミ
+      ///
+      /// Locales: en, ja
+      static func string_button_reviews_submited_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_reviews_submited_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_reviews_submited_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_reviews_submited_screen_profile", bundle: bundle, comment: "")
+      }
+
       /// en translation: 新規会員登録
       ///
       /// Locales: en, ja
@@ -643,6 +948,81 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_button_register_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static func string_application_list_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_application_list_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_application_list_screen_profile"
+        }
+
+        return NSLocalizedString("string_application_list_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static func string_button_application_list_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_application_list_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_application_list_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_application_list_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 設定
+      ///
+      /// Locales: en, ja
+      static func string_button_setting_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_setting_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_setting_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_setting_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 退会する
+      ///
+      /// Locales: en, ja
+      static func string_button_withdraw_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_withdraw_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_withdraw_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_withdraw_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 閲覧履歴
+      ///
+      /// Locales: en, ja
+      static func string_button_browsing_history_screen_profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_button_browsing_history_screen_profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_button_browsing_history_screen_profile"
+        }
+
+        return NSLocalizedString("string_button_browsing_history_screen_profile", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

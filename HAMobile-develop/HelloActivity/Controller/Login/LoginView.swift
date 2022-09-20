@@ -11,7 +11,7 @@ import GoogleSignInSwift
 import GoogleSignIn
 import LineSDK
 
-enum TypeButton {
+enum TypeButtonLogin {
     case facebook
     case google
     case line
@@ -244,7 +244,7 @@ struct LoginView: View {
         }
     }
     
-    @ViewBuilder func buildButton(type: TypeButton, geometry: GeometryProxy) -> some View {
+    @ViewBuilder func buildButton(type: TypeButtonLogin, geometry: GeometryProxy) -> some View {
         switch (type){
         case .facebook:
             Button {

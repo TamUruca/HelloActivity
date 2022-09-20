@@ -159,8 +159,9 @@ extension ApiManager {
             failured(R.string.localizable.error_network())
             return
         }
-        let parameters: Parameters = ["email": credentials.email, "password": credentials.password, "terminal_id": 123456]
-        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
+        let deviceID = UIDevice.current.identifierForVendor!.uuidString
+        let parameters: Parameters = ["email": credentials.email, "password": credentials.password, "device_id": deviceID]
+        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
             self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
         }
     }
@@ -200,8 +201,14 @@ extension ApiManager {
     private func responseAPI<T>(typeAPI: TypeAPI, response: AFDataResponse<Any>, success: @escaping Successs<T>, failured: @escaping Failured) {
         let result = self.chekResponse(response: response)
         if result.0 == 200 {
-            if let json = response.value as? [String: Any] {
-                responseTypeAPI(typeAPI: typeAPI, json: json, success: success)
+            
+            if let json = response.value as? [String: Any], let data = json["data"] as? [String: Any] {
+                let status = json["status"] as? Int ?? 0
+                if status == 200 {
+                    responseTypeAPI(typeAPI: typeAPI, json: data, success: success)
+                } else {
+                    failured(ErrorRequest.convertData.localizedDescription)
+                }
             } else {
                 failured(ErrorRequest.convertData.localizedDescription)
             }

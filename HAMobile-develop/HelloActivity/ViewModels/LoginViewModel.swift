@@ -25,13 +25,13 @@ final class LoginViewModel: ObservableObject {
     // MARK: - Call API
     func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
-        ApiManager.shareInstance.postAPILogin( credentials: credentials, success: { (isSuccess, data) in
+        ApiManager.shareInstance.postAPILogin(credentials: credentials, success: { [weak self] (isSuccess, data) in
             progressApp.isShowProgressView = false
             guard isSuccess else {
                 completion(false)
                 return
             }
-            
+            self?.userData = data
             completion(isSuccess)
         }, failured: { [weak self] (message) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -40,5 +40,13 @@ final class LoginViewModel: ObservableObject {
                 completion(false)
             }
         })
+    }
+    
+    func isLoginSocial(type: String) -> Bool {
+        if let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue), !dataSocial.token.isEmpty {
+            return dataSocial.type == type
+        } else {
+            return false
+        }
     }
 }

@@ -7,13 +7,17 @@
 
 import SwiftUI
 
+var dataRegisterSocial: DataRegisterSocial = DataRegisterSocial(type: "", token: "") {
+    didSet {
+        UserDefaults.standard.save(customObject: dataRegisterSocial, inKey: UserDefaultsKeys.loginSocial.rawValue)
+    }
+}
+
 struct RegisterView: View {
 
     @ObservedObject var tabbarRouter: TabBarRouter
-    @EnvironmentObject var authenticationRegister: AuthenticationRegister
     @StateObject private var registerVM = RegisterViewModel()
     @EnvironmentObject var progressApp: ProgressApp
-    var typeSocial: TypeSocialRegister = .unknow
     
     var body: some View {
         GeometryReader { geometry in
@@ -54,7 +58,9 @@ struct RegisterView: View {
                             Button(action: {
                                 // register
                                 registerVM.postRegister(progressApp: progressApp){ isSuccess in
-                                    authenticationRegister.updateValidation(success: isSuccess)
+                                    if isSuccess {
+                                        tabbarRouter.currentPage = .profile
+                                    }
                                 }
                             }, label: {
                                 Text(R.string.localizable.string_button_register_screen_register()).foregroundColor(.white)

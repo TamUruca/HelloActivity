@@ -18,9 +18,7 @@ enum TypeButton {
 }
 
 struct LoginView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    var loginVM: LoginViewModel = LoginViewModel()
+    @StateObject private var loginVM: LoginViewModel = LoginViewModel()
     @State private var isError: Bool = false
     @State private var error: String = ""
     @ObservedObject var tabbarRouter: TabBarRouter
@@ -40,7 +38,7 @@ struct LoginView: View {
                             .padding(.top, 0)
                         
                         // email
-                        TextField(R.string.localizable.hint_username_screen_login(), text: $username)
+                        TextField(R.string.localizable.hint_username_screen_login(), text: $loginVM.credentials.email)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
@@ -64,7 +62,7 @@ struct LoginView: View {
                         .frame(width: geometry.size.width - 40, height: 40)
                         
                         //password
-                        SecureTextField(text: $password)
+                        SecureTextField(text: $loginVM.credentials.password)
                         
                         // forgot password
                         HStack(alignment: .top, spacing: 10){
@@ -85,13 +83,13 @@ struct LoginView: View {
                         HStack(alignment: .top, spacing: 10){
                             Button(action: {
                                 
-                                if username.isEmpty {
+                                if loginVM.credentials.email.isEmpty {
                                     isError = true
                                     error = R.string.localizable.error_empty_username_screen_login()
                                     return
                                 }
                                 
-                                if password.isEmpty {
+                                if loginVM.credentials.password.isEmpty {
                                     isError = true
                                     error = R.string.localizable.error_empty_password_screen_login()
                                     return
@@ -119,7 +117,6 @@ struct LoginView: View {
                             .frame(width: geometry.size.width - 40, height: 40)
                             .background(Color.red)
                             .cornerRadius(5)
-                            
                         }
                         .frame(width: geometry.size.width - 40)
                         .padding(.top, 10)
@@ -127,7 +124,7 @@ struct LoginView: View {
                         // register button
                         HStack(alignment: .top, spacing: 10){
                             Button(action: {
-                                // do something
+                                tabbarRouter.currentPage = .newRegister
                             }, label: {
                                 Text(R.string.localizable.string_button_register_screen_login()).foregroundColor(.white)
                                     .font(.system(size: 16))
@@ -182,23 +179,26 @@ struct LoginView: View {
     }
     
     func loginFacebook() {
+        if loginVM.isLoginSocial(type: facebook) {
+            tabbarRouter.currentPage = .newRegister
+            return
+        }
         if loggedFB {
-            print("da logout FB")
             mangaerFB.logOut()
             loggedFB = false
         } else {
             mangaerFB.logIn(permissions: [], from: nil) {
-                (result, error) in
-                
-                if error != nil {
-                    print(error!.localizedDescription)
+                (result, err) in
+                if err != nil {
+                    isError = true
+                    error = err!.localizedDescription
                     return
                 }
                 // check user cancel
                 if !result!.isCancelled {
                     //login success facebook
                     loggedFB = true
-                    print(result?.token?.tokenString as Any)
+                    dataRegisterSocial = DataRegisterSocial(type: facebook, token: result?.token?.tokenString ?? "")
                     tabbarRouter.currentPage = .newRegister
                 }
             }
@@ -206,29 +206,40 @@ struct LoginView: View {
     }
     
     func loginGoogle() {
+        if loginVM.isLoginSocial(type: google) {
+            tabbarRouter.currentPage = .newRegister
+            return
+        }
         GIDSignIn.sharedInstance.signIn(
             with: signInConfig,
             presenting: ApplicationUtility.rootViewController) { user, error in
                 guard let signInUser = user else {
-                    // Inspect error
                     return
                 }
-                // ucceeded
+                // succeeded
                 loggedGoogle = true
-                print("success: \(signInUser.authentication.refreshToken)")
+                dataRegisterSocial = DataRegisterSocial(type: google, token: signInUser.authentication.refreshToken)
+                tabbarRouter.currentPage = .newRegister
             }
     }
     
     func loginLine() {
+        if loginVM.isLoginSocial(type: line) {
+            tabbarRouter.currentPage = .newRegister
+            return
+        }
         LoginManager.shared.login(
             permissions: [.profile]
         ) {
             result in
             switch result {
             case .success(let loginResult):
-                print(loginResult)
-            case .failure(let error):
-                print(error)
+                dataRegisterSocial = DataRegisterSocial(type: line, token: loginResult.accessToken.value)
+                tabbarRouter.currentPage = .newRegister
+            case .failure(let err):
+                isError = true
+                error = err.localizedDescription
+
             }
         }
     }
@@ -321,7 +332,7 @@ struct SecureTextField: View {
                         .frame(width: UIScreen.main.bounds.width - 40)
                         .offset(x: 20, y: 0)
                 } else {
-                    TextField("", text: $text)
+                    TextField(R.string.localizable.hint_password_screen_login(), text: $text)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
@@ -339,22 +350,9 @@ struct SecureTextField: View {
                         }
                         .padding(.trailing)
                         .foregroundColor(isSecureField == true ? Color.black : Color.gray)
-                }.offset(x: -20, y: 0)
+                }.offset(x: -30, y: 0)
             }
             .offset(x: 5, y: 0)
-        }
-    }
-}
-
-struct LoadingView: View {
-    var body: some View {
-        ZStack {
-            Color(.systemBackground)
-                .ignoresSafeArea()
-            
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                .scaleEffect(3)
         }
     }
 }

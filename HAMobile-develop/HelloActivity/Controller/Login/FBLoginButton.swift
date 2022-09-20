@@ -9,33 +9,10 @@ import Foundation
 import FBSDKLoginKit
 import SwiftUI
 
-//struct FBLoginApp: View {
-//
-//    @AppStorage("logged") var logged = false
-//    @AppStorage("email") var email = ""
-//    @State var manager = LoginManager()
-//
-//    var body: some View {
-//        if true {
-//            manager.logIn(permissions: ["public_profile", "email"], from: nil) {
-//                (result, err) in
-//
-//
-//
-//
-//            }
-//        }
-//    }
-//}
-
-//                        FBLog(logged: $logged, email: $email)
-//                            .frame(width: 100, height: 50)
-//                            .padding(.horizontal, 10)
-
-struct FBLog: UIViewRepresentable {
+struct FBLogin: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
-        return FBLog.Coordinator(parent1: self)
+        return FBLogin.Coordinator(parent1: self)
     }
     
     @Binding var logged: Bool
@@ -54,9 +31,9 @@ struct FBLog: UIViewRepresentable {
     
     class Coordinator: NSObject, LoginButtonDelegate {
         
-        var parent: FBLog
+        var parent: FBLogin
         
-        init(parent1: FBLog) {
+        init(parent1: FBLogin) {
             parent = parent1
         }
         
@@ -65,12 +42,7 @@ struct FBLog: UIViewRepresentable {
                 print(error!.localizedDescription)
                 return
             }
-            
-            
-            // check user cancel
-            
             if !result!.isCancelled {
-                
                 print(result?.token?.tokenString)
             }
         }

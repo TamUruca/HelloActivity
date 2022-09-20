@@ -21,7 +21,7 @@ class Utils {
     }
     
     class func postAPIRegister() -> String {
-        return getBaseUrl() + "/api/app/"
+        return getBaseUrl() + "/api/app/user/authorize"
     }
     
 }

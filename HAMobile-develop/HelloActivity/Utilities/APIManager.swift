@@ -166,13 +166,29 @@ extension ApiManager {
     }
     
     public func postAPIRegister(credentials: RegisterCredentials,
-                             success: @escaping Successs<Any>,
+                             success: @escaping Successs<UserLogin>,
                              failured: @escaping Failured) {
         if !Reachability.shared.isConnectedToInternet {
             failured(R.string.localizable.error_network())
             return
         }
-        let parameters: Parameters = ["yourName": credentials.yourName, "name": credentials.name, "nickName": credentials.nickName, "emailAddress": credentials.emailAddress, "password": credentials.password ]
+        
+        var parameters: Parameters = ["name_jp": credentials.yourName, "name": credentials.name, "nick_name": credentials.nickName, "email": credentials.emailAddress, "password": credentials.password, "magazine_accepted": 0]
+        let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue)
+        
+        switch dataSocial?.type {
+        case "facebook":
+            parameters["social_facebook"] = dataSocial?.token
+        case "google":
+            parameters["social_google"] = dataSocial?.token
+        case "line":
+            parameters["social_line"] = dataSocial?.token
+        case "yahoo":
+            parameters["social_yahoo"] = dataSocial?.token
+        default:
+            break
+        }
+        
         sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .urlncoded) ).responseJSON { (response) in
             self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
         }
@@ -197,13 +213,16 @@ extension ApiManager {
     }
     
     private func responseTypeAPI<T>(typeAPI: TypeAPI, json: [String: Any], success: @escaping Successs<T>) {
+        
         switch typeAPI {
         case .login:
             let data = UserLogin(dic: json)
             UserDefaults.standard.set(data.token, forKey: "token")
             success(true, data as? T)
         case .register:
-            break
+            let data = UserLogin(dic: json)
+            UserDefaults.standard.set(data.token, forKey: "token")
+            success(true, data as? T)
         }
     }
     

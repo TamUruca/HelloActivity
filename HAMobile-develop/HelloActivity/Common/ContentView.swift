@@ -138,7 +138,9 @@ struct ContentView: View {
             )
         }
         .onAppear {
-            UserDefaults.standard.removeObject(forKey: "token")
+            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.fcmToken)
+            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.loginSocial)
+            UserDefaultUtils.shared.delete(key: UserDefaultsKeys.token)
         }
     }
     
@@ -147,11 +149,10 @@ struct ContentView: View {
     }
     
     func checkLogin() -> Page {
-        if  let token = UserDefaults.standard.string(forKey: "token"), !token.isEmpty {
-            return .profile
-        } else {
+        guard let _ = UserDefaultUtils.shared.get(key: UserDefaultsKeys.token)  else {
             return .login
         }
+        return .profile
     }
 }
 

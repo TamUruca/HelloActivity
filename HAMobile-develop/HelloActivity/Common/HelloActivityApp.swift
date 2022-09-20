@@ -12,11 +12,11 @@ import LineSDK
 @main
 struct HelloActivityApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @State private var IsShowedOnboarding = UserDefaults.standard.bool(forKey: "IsShowedOnboarding")
+    @State private var IsShowedOnboarding = UserDefaultUtils.shared.get(key: UserDefaultsKeys.isShowedOnboarding) as? Bool
 
     var body: some Scene {
         WindowGroup {
-            if IsShowedOnboarding {
+            if IsShowedOnboarding ?? false {
                 ContentView()
                     .onOpenURL { url in
                         let _ = GIDSignIn.sharedInstance.handle(url)

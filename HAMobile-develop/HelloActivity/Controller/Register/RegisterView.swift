@@ -9,7 +9,7 @@ import SwiftUI
 
 var dataRegisterSocial: DataRegisterSocial = DataRegisterSocial(type: "", token: "") {
     didSet {
-        UserDefaults.standard.save(customObject: dataRegisterSocial, inKey: UserDefaultsKeys.loginSocial.rawValue)
+        UserDefaultUtils.shared.set(key: UserDefaultsKeys.loginSocial, value: dataRegisterSocial)
     }
 }
 

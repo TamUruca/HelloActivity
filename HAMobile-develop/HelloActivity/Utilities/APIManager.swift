@@ -92,7 +92,7 @@ class Reachability {
 
 class ApiManager {
     static let shareInstance = ApiManager()
-    let fcm_tokem = UserDefaults.standard.string(forKey: "fcmToken")
+    let fcm_tokem = UserDefaultUtils.shared.get(key: UserDefaultsKeys.fcmToken)
     
     private lazy var sessionManager: Session = {
         let configuration = URLSessionConfiguration.default
@@ -174,7 +174,7 @@ extension ApiManager {
         }
         
         var parameters: Parameters = ["name_jp": credentials.yourName, "name": credentials.name, "nick_name": credentials.nickName, "email": credentials.emailAddress, "password": credentials.password, "magazine_accepted": 0]
-        let dataSocial = UserDefaults.standard.retrieve(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial.rawValue)
+        let dataSocial = UserDefaultUtils.shared.get(object: DataRegisterSocial.self, fromKey: UserDefaultsKeys.loginSocial)
         
         switch dataSocial?.type {
         case "facebook":
@@ -217,11 +217,11 @@ extension ApiManager {
         switch typeAPI {
         case .login:
             let data = UserLogin(dic: json)
-            UserDefaults.standard.set(data.token, forKey: "token")
+            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
             success(true, data as? T)
         case .register:
             let data = UserLogin(dic: json)
-            UserDefaults.standard.set(data.token, forKey: "token")
+            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
             success(true, data as? T)
         }
     }

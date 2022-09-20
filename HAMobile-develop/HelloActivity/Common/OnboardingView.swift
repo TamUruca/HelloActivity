@@ -28,7 +28,7 @@ struct OnboardingView: View {
                     
                     Button("Get Started") {
                         isActive = true
-                        UserDefaults.standard.set(true, forKey: "IsShowedOnboarding")
+                        UserDefaultUtils.shared.set(key:UserDefaultsKeys.isShowedOnboarding, value: true)
                     }
                     .frame(width: geometry.size.width * 0.6, height: 60)
                     .background(Color.green)

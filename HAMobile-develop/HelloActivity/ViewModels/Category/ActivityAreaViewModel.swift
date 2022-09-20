@@ -9,10 +9,6 @@ import Foundation
 
 class ActivityAreaViewModel: ObservableObject {
     @Published var areaDatas: [AreaData]?
-//
-//    var registerDisabled: Bool {
-//        credentials.yourName.isEmpty || credentials.name.isEmpty || credentials.nickName.isEmpty || credentials.emailAddress.isEmpty || credentials.password.isEmpty
-//    }
     
     // MARK: - Call API
     func getListActivityArea() {
@@ -32,7 +28,6 @@ class ActivityAreaViewModel: ObservableObject {
             } else {
                 print("data")
             }
-            
         }
     }
 }

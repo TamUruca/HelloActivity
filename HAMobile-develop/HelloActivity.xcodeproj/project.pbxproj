@@ -20,6 +20,7 @@
 		045BCE9428D979A4006C2430 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCE9328D979A4006C2430 /* TargetType.swift */; };
 		045BCE9828D9A142006C2430 /* AreasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCE9728D9A142006C2430 /* AreasResponse.swift */; };
 		045BCE9C28D9A449006C2430 /* ActivityAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCE9B28D9A449006C2430 /* ActivityAreaViewModel.swift */; };
+		045BCE9E28D9BAEB006C2430 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCE9D28D9BAEB006C2430 /* Encodable+Extensions.swift */; };
 		04830C5D28CED86800EA50B1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04830C5C28CED86800EA50B1 /* LoginView.swift */; };
 		049287AA28C8A12C006B2EA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049287A928C8A12C006B2EA6 /* AppDelegate.swift */; };
 		0493B3DF28CF3E700086B816 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B3DE28CF3E700086B816 /* CategoryItem.swift */; };
@@ -52,7 +53,7 @@
 		04F3905928D4906A002D92BA /* LineLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905528D4906A002D92BA /* LineLoginButton.swift */; };
 		04F3905A28D4906A002D92BA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905728D4906A002D92BA /* RegisterView.swift */; };
 		04F3906028D490A1002D92BA /* AuthenticationRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3905F28D490A1002D92BA /* AuthenticationRegister.swift */; };
-		04F3906228D490B6002D92BA /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906128D490B6002D92BA /* UserLogin.swift */; };
+		04F3906228D490B6002D92BA /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906128D490B6002D92BA /* UserLoginResponse.swift */; };
 		04F3906528D490D7002D92BA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906428D490D7002D92BA /* View+Extensions.swift */; };
 		04F3906928D49170002D92BA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906828D49170002D92BA /* RegisterViewModel.swift */; };
 		A7DD615638CBC2BB280E3A7D /* Pods_HelloActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */; };
@@ -94,6 +95,7 @@
 		045BCE9328D979A4006C2430 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		045BCE9728D9A142006C2430 /* AreasResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreasResponse.swift; sourceTree = "<group>"; };
 		045BCE9B28D9A449006C2430 /* ActivityAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAreaViewModel.swift; sourceTree = "<group>"; };
+		045BCE9D28D9BAEB006C2430 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		04830C5C28CED86800EA50B1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		049287A928C8A12C006B2EA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049287AB28C8A1D1006B2EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 		04F3905528D4906A002D92BA /* LineLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineLoginButton.swift; sourceTree = "<group>"; };
 		04F3905728D4906A002D92BA /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		04F3905F28D490A1002D92BA /* AuthenticationRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationRegister.swift; sourceTree = "<group>"; };
-		04F3906128D490B6002D92BA /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		04F3906128D490B6002D92BA /* UserLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
 		04F3906428D490D7002D92BA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		04F3906828D49170002D92BA /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloActivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				045BCE9728D9A142006C2430 /* AreasResponse.swift */,
-				04F3906128D490B6002D92BA /* UserLogin.swift */,
+				04F3906128D490B6002D92BA /* UserLoginResponse.swift */,
 				04C6E66828C8425500317F2D /* ChatItem.swift */,
 				0493B3DE28CF3E700086B816 /* CategoryItem.swift */,
 				0444622228D17FE200F3B7F2 /* ActivityItem.swift */,
@@ -373,6 +375,7 @@
 			children = (
 				04F3906428D490D7002D92BA /* View+Extensions.swift */,
 				B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */,
+				045BCE9D28D9BAEB006C2430 /* Encodable+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				049287AA28C8A12C006B2EA6 /* AppDelegate.swift in Sources */,
 				041E0A9428D45B470076A5F4 /* ListActivityNew.swift in Sources */,
 				049D401528BDAD3D00606A0E /* ProfileView.swift in Sources */,
+				045BCE9E28D9BAEB006C2430 /* Encodable+Extensions.swift in Sources */,
 				0444622528D1810A00F3B7F2 /* ActivityPageItem.swift in Sources */,
 				B5CF6A6E28D8BC3A006143CD /* String+Extensions.swift in Sources */,
 				0444622528D1810A00F3B7F2 /* ActivityPageItem.swift in Sources */,
@@ -642,7 +646,7 @@
 				041E0A9228D457540076A5F4 /* ListActivityTrending.swift in Sources */,
 				0444622328D17FE200F3B7F2 /* ActivityItem.swift in Sources */,
 				04A47BF728B8C92B0017B26E /* HelloActivityApp.swift in Sources */,
-				04F3906228D490B6002D92BA /* UserLogin.swift in Sources */,
+				04F3906228D490B6002D92BA /* UserLoginResponse.swift in Sources */,
 				041E0A8A28D30AA70076A5F4 /* ListActivityArea.swift in Sources */,
 				045BCE9C28D9A449006C2430 /* ActivityAreaViewModel.swift in Sources */,
 				041E0A8828D2DA350076A5F4 /* UIGrid.swift in Sources */,

@@ -6,17 +6,19 @@
 //
 
 import Foundation
+import UIKit
 
 struct LoginCredentials: Codable {
     var email = ""
     var password = ""
+    var device_id = UIDevice.current.identifierForVendor?.uuidString
 }
 
 final class LoginViewModel: ObservableObject {
     
     @Published var credentials = LoginCredentials()
     @Published var error: AuthenticationLogin.AuthenticationLoginError?
-    @Published var userData: UserLogin?
+    @Published var userLogindata: UserLoginResponse?
     
     var loginDisabled: Bool {
         credentials.email.isEmpty || credentials.password.isEmpty
@@ -25,21 +27,26 @@ final class LoginViewModel: ObservableObject {
     // MARK: - Call API
     func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
-        ApiManager.shareInstance.postAPILogin(credentials: credentials, success: { [weak self] (isSuccess, data) in
+        
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams()) { (success, IsFailResponseError, data) -> (Void) in
             progressApp.isShowProgressView = false
-            guard isSuccess else {
-                completion(false)
-                return
-            }
-            self?.userData = data
-            completion(isSuccess)
-        }, failured: { [weak self] (message) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            if success && !IsFailResponseError , let data = data {
+               guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
+                let decoder = JSONDecoder()
+                do {
+                    let userLogindata = try decoder.decode(UserLoginResponse.self, from: jsonData)
+                    self.userLogindata = userLogindata
+                    UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: userLogindata.data.token)
+                    completion(success)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            } else if let data = data {
                 progressApp.isShowProgressView = false
-                self?.error = .errorAPI(error: message)
+                self.error = .errorAPI(error: data as! String)
                 completion(false)
             }
-        })
+        }
     }
     
     func isLoginSocial(type: String) -> Bool {

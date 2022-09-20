@@ -192,23 +192,18 @@ extension ApiManager {
                 switch statusCode {
                 case 200:
                     completion?(true, false, data)
-
-                case 400:
-                    completion?(false, false, data)
-
                 default:
-                    print("--------------error------------------")
+                    completion?(false, false, data)
                 }
             case .failure(_):
-//                fatalError()
-                completion?(false, true, nil)
+                completion?(false, true, R.string.localizable.error_network())
             }
         })
     }
     
-    public func postAPILogin(credentials: LoginCredentials,
-                             success: @escaping Successs<UserLogin>,
-                             failured: @escaping Failured) {
+//    public func postAPILogin(credentials: LoginCredentials,
+//                             success: @escaping Successs<UserLogin>,
+//                             failured: @escaping Failured) {
 //        if !Reachability.shared.isConnectedToInternet {
 //            failured(R.string.localizable.error_network())
 //            return
@@ -218,11 +213,11 @@ extension ApiManager {
 //        sessionManager.request(Utils.postAPILogin(), method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: getHeader(token: "", typeContentHeader: .json) ).responseJSON { (response) in
 //            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
 //        }
-    }
+//    }
     
-    public func postAPIRegister(credentials: RegisterCredentials,
-                             success: @escaping Successs<UserLogin>,
-                             failured: @escaping Failured) {
+//    public func postAPIRegister(credentials: RegisterCredentials,
+//                             success: @escaping Successs<UserLogin>,
+//                             failured: @escaping Failured) {
 //        if !Reachability.shared.isConnectedToInternet {
 //            failured(R.string.localizable.error_network())
 //            return
@@ -247,7 +242,7 @@ extension ApiManager {
 //        sessionManager.request(Utils.postAPIRegister(), method: .post, parameters: parameters, encoding: URLEncoding.default, headers: getHeader(token: "", typeContentHeader: .urlncoded) ).responseJSON { (response) in
 //            self.responseAPI(typeAPI: .login, response: response, success: success, failured: failured)
 //        }
-    }
+//    }
 }
 
 extension ApiManager {
@@ -277,13 +272,9 @@ extension ApiManager {
         
         switch typeAPI {
         case .login:
-            let data = UserLogin(dic: json)
-            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
-            success(true, data as? T)
+            break
         case .register:
-            let data = UserLogin(dic: json)
-            UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: data.token)
-            success(true, data as? T)
+           break
         }
     }
     

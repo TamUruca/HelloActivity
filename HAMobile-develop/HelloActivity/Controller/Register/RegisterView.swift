@@ -29,16 +29,16 @@ struct RegisterView: View {
                         
                         buildLable(geometry: geometry, text: R.string.localizable.label_your_email_screen_register())
                         .padding(.top, -20)
-                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_your_email_screen_register(), valueText: $registerVM.credentials.yourName)
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_your_email_screen_register(), valueText: $registerVM.credentials.name_jp)
                         
                         buildLable(geometry: geometry, text: R.string.localizable.label_name_screen_register())
                         CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_name_screen_register(), valueText: $registerVM.credentials.name)
                         
                         buildLable(geometry: geometry, text: R.string.localizable.label_nick_name_screen_register())
-                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_nick_name_screen_register(), valueText: $registerVM.credentials.nickName)
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_nick_name_screen_register(), valueText: $registerVM.credentials.nick_name)
 
                         buildLable(geometry: geometry, text: R.string.localizable.label_email_address_screen_register())
-                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_email_address_screen_register(), valueText: $registerVM.credentials.emailAddress)
+                        CustomTextField(geometry: geometry, textHint: R.string.localizable.hint_email_address_screen_register(), valueText: $registerVM.credentials.email)
                     }
                     .padding(.leading, 20)
                     .padding(.trailing, 20)

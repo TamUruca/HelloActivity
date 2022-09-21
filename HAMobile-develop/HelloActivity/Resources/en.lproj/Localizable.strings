@@ -68,3 +68,5 @@
 
 "string_button_logout_screen_profile"                               = "ログアウト";
 
+// screen inbox
+"title_screen_inbox"                                               = "受信トレイ";

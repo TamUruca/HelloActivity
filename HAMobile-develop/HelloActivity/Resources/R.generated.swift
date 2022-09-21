@@ -113,10 +113,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 5 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
     /// Image `banner`.
     static let banner = Rswift.ImageResource(bundle: R.hostingBundle, name: "banner")
+    /// Image `ic_back`.
+    static let ic_back = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_back")
     /// Image `ic_calendar`.
     static let ic_calendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_calendar")
     /// Image `ic_check_success`.
@@ -130,6 +132,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "banner", bundle: ..., traitCollection: ...)`
     static func banner(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.banner, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ic_back", bundle: ..., traitCollection: ...)`
+    static func ic_back(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ic_back, compatibleWith: traitCollection)
     }
     #endif
 
@@ -186,7 +195,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 45 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 46 localization keys.
     struct localizable {
       /// en translation: Can not convert data !
       ///
@@ -340,6 +349,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_inbox_screen_profile = Rswift.StringResource(key: "string_inbox_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static let title_screen_inbox = Rswift.StringResource(key: "title_screen_inbox", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 投稿した口コミ
       ///
       /// Locales: en, ja
@@ -937,6 +950,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_inbox_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 受信トレイ
+      ///
+      /// Locales: en, ja
+      static func title_screen_inbox(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("title_screen_inbox", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "title_screen_inbox"
+        }
+
+        return NSLocalizedString("title_screen_inbox", bundle: bundle, comment: "")
       }
 
       /// en translation: 投稿した口コミ

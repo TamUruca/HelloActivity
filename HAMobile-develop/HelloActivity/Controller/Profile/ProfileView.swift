@@ -34,7 +34,6 @@ struct ProfileView: View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
                 contentView(geometry: geometry)
-                
             }
         }
     }
@@ -101,7 +100,8 @@ struct ProfileView: View {
                     }
                 ZStack {
                     Button {
-                        print("string_inbox_screen_profile")
+                        showInboxView()
+                       
                     } label: {
                         VStack {
                             Image(systemName: "envelope")
@@ -290,6 +290,11 @@ struct ProfileView: View {
                 print(loginVM.error?.errorDescription ?? "")
             }
         }
+    }
+    
+    func showInboxView() {
+        progressApp.isShowHeaderMainApp = false
+        tabbarRouter.currentPage = .inbox
     }
 }
 

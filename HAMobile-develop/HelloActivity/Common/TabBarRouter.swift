@@ -21,4 +21,5 @@ enum Page {
     case notification
     case login
     case newRegister
+    case inbox
 }

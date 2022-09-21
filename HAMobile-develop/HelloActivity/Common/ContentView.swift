@@ -47,54 +47,62 @@ struct ContentView: View {
             RegisterView(tabbarRouter: tabbarRouter)
                 .environmentObject(tabbarRouter)
                 .environmentObject(progressApp)
+        case .inbox:
+            InboxView(tabbarRouter: tabbarRouter)
+                .environmentObject(tabbarRouter)
+                .environmentObject(progressApp)
         }
+    }
+    
+    fileprivate func headerMainApp(_ geometry: GeometryProxy) -> some View {
+        return NavigationView {
+            VStack {
+                Spacer()
+            }
+            .navigationBarTitle(
+                Text("")
+                , displayMode: .inline)
+            .navigationBarItems(
+                leading:
+                    HStack {
+                        if !self.menuOpen {
+                            Button(action: {
+                                self.openMenu()
+                            }) {
+                                Image(systemName: "list.dash")
+                                    .font(.title2)
+                            }.foregroundColor(.black)
+                        }
+                    },
+                trailing:
+                    HStack {
+                        Button(action: {
+                            tabbarRouter.currentPage = .notification
+                        }) {
+                            Image(systemName: "bell.badge")
+                                .font(.title2)
+                        }.foregroundColor(.black)
+                    })
+            .navigationBarTitle(Text("Names"))
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Image("logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: geometry.size.width * 0.4)
+                    }
+                }
+                
+            }
+        }
+        .frame(height: progressApp.isShowHeaderMainApp ? geometry.size.height/16 : 0, alignment: .top)
     }
     
     fileprivate func showMainView(_ geometry: GeometryProxy) -> some View {
         return VStack(spacing: 0) {
             
-            NavigationView {
-                VStack {
-                    Spacer()
-                }
-                .navigationBarTitle(
-                    Text("")
-                    , displayMode: .inline)
-                .navigationBarItems(
-                    leading:
-                        HStack {
-                            if !self.menuOpen {
-                                Button(action: {
-                                    self.openMenu()
-                                }) {
-                                    Image(systemName: "list.dash")
-                                        .font(.title2)
-                                }.foregroundColor(.black)
-                            }
-                        },
-                    trailing:
-                        HStack {
-                            Button(action: {
-                                tabbarRouter.currentPage = .notification
-                            }) {
-                                Image(systemName: "bell.badge")
-                                    .font(.title2)
-                            }.foregroundColor(.black)
-                        })
-                .navigationBarTitle(Text("Names"))
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack {
-                            Image("logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width * 0.4)
-                        }
-                    }
-                    
-                }
-            }
-            .frame(height: geometry.size.height/16, alignment: .top)
+            headerMainApp(geometry)
             
             Divider().background(Color.black)
             

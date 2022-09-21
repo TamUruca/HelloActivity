@@ -9,4 +9,5 @@ import SwiftUI
 
 class ProgressApp: ObservableObject {
     @Published var isShowProgressView = false
+    @Published var isShowHeaderMainApp = true
 }

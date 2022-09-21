@@ -173,10 +173,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
+    /// Nib `ApplicationListMenuView`.
+    static let applicationListMenuView = _R.nib._ApplicationListMenuView()
     /// Nib `CollectionViewCell`.
     static let collectionViewCell = _R.nib._CollectionViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ApplicationListMenuView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.applicationListMenuView) instead")
+    static func applicationListMenuView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.applicationListMenuView)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "CollectionViewCell", in: bundle)`
@@ -185,6 +195,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.collectionViewCell)
     }
     #endif
+
+    static func applicationListMenuView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.applicationListMenuView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
 
     static func collectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CollectionViewCell? {
       return R.nib.collectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CollectionViewCell
@@ -1178,6 +1192,17 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _CollectionViewCell.validate()
+    }
+
+    struct _ApplicationListMenuView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ApplicationListMenuView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
     }
 
     struct _CollectionViewCell: Rswift.NibResourceType, Rswift.Validatable {

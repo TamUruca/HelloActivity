@@ -33,6 +33,8 @@ struct ApplicationListView: View {
                                R.string.localizable.menu_item_past_cancen_screen_application_list(),
                                R.string.localizable.menu_item_consultation_inquiry_screen_application_list()]
     @State var currentIndex = 0
+    @State var menuCurrentIndex = 0
+    
     @ViewBuilder var applicationListContentView: some View {
         ApplicationListContentView()
     }
@@ -78,36 +80,43 @@ struct ApplicationListView: View {
         .frame(width: geometry.size.width)
     }
     
+//    fileprivate func headerMenuView(_ geometry: GeometryProxy) -> some View {
+//        return ZStack{
+//            LineView(colorLine: .gray)
+//                .frame(height: 1)
+//                .padding(.top, 15)
+//                .frame(width: geometry.size.width - 80, height: 50)
+//            HStack {
+//                    ForEach(0..<applicationListMenu.count) { index in
+//                        if index != 0 {
+//                            Spacer()
+//                        }
+//                        Button {
+//                            currentIndex = index
+//                        } label: {
+//                            ZStack {
+//                                Text(applicationListMenu[index])
+//                                    .foregroundColor(.blue)
+//                                    .foregroundColor(currentIndex == index ? .red : .gray)
+//                                LineView(colorLine: .red)
+//                                    .frame(height: 1)
+//                                    .padding(.top, 30)
+//                                    .opacity(currentIndex == index ? 1 : 0)
+//                            }
+//                            .fixedSize()
+//                            .padding(EdgeInsets(top: -15, leading: -5, bottom: 0, trailing: 0))
+//                        }
+//                    }
+//            }
+//            .frame(width: geometry.size.width - 80, height: 50)
+//
+//        }
+//    }
+    
     fileprivate func headerMenuView(_ geometry: GeometryProxy) -> some View {
-        return ZStack{
-            LineView(colorLine: .gray)
-                .frame(height: 1)
-                .padding(.top, 15)
-                .frame(width: geometry.size.width - 80, height: 50)
-            HStack {
-                    ForEach(0..<applicationListMenu.count) { index in
-                        if index != 0 {
-                            Spacer()
-                        }
-                        Button {
-                            currentIndex = index
-                        } label: {
-                            ZStack {
-                                Text(applicationListMenu[index])
-                                    .foregroundColor(.blue)
-                                    .foregroundColor(currentIndex == index ? .red : .gray)
-                                LineView(colorLine: .red)
-                                    .frame(height: 1)
-                                    .padding(.top, 30)
-                                    .opacity(currentIndex == index ? 1 : 0)
-                            }
-                            .fixedSize()
-                            .padding(EdgeInsets(top: -15, leading: -5, bottom: 0, trailing: 0))
-                        }
-                    }
-            }
-            .frame(width: geometry.size.width - 80, height: 50)
-           
+        return VStack{
+            ApplicationListMenuViewCustom(indexItem: $menuCurrentIndex)
+                .frame(width: geometry.size.width - 40, height: 50)
         }
     }
     

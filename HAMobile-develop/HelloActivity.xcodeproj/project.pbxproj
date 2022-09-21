@@ -56,6 +56,8 @@
 		04F3906528D490D7002D92BA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906428D490D7002D92BA /* View+Extensions.swift */; };
 		04F3906928D49170002D92BA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3906828D49170002D92BA /* RegisterViewModel.swift */; };
 		A7DD615638CBC2BB280E3A7D /* Pods_HelloActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */; };
+		B5B5223628DB5B0E00FD013F /* ApplicationListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */; };
+		B5B5223828DB5B2400FD013F /* ApplicationListMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */; };
 		B5CF6A6E28D8BC3A006143CD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */; };
 		FD99E76028D8016500116D23 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E75F28D8016500116D23 /* R.generated.swift */; };
 		FD99E76328D8102700116D23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD99E76528D8102700116D23 /* Localizable.strings */; };
@@ -139,6 +141,8 @@
 		04F3906428D490D7002D92BA /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		04F3906828D49170002D92BA /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		99FAFCEC2F07985A08FADCE0 /* Pods_HelloActivity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloActivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListMenuView.swift; sourceTree = "<group>"; };
+		B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicationListMenuView.xib; sourceTree = "<group>"; };
 		B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F5726FB04EBD7328E78841CD /* Pods-HelloActivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.release.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.release.xcconfig"; sourceTree = "<group>"; };
 		FCD60DE54D92D0F128430D42 /* Pods-HelloActivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.debug.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.debug.xcconfig"; sourceTree = "<group>"; };
@@ -398,6 +402,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B5B5223428DB5A6900FD013F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */,
+				B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FD99E75E28D8016500116D23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +459,7 @@
 		FD99E77F28DB2A0800116D23 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				B5B5223428DB5A6900FD013F /* Views */,
 				FD99E77D28DB2A0200116D23 /* ApplicationListContentView.swift */,
 			);
 			path = Content;
@@ -560,6 +574,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B5223828DB5B2400FD013F /* ApplicationListMenuView.xib in Resources */,
 				04A47BFE28B8C92D0017B26E /* Preview Assets.xcassets in Resources */,
 				FD99E76328D8102700116D23 /* Localizable.strings in Resources */,
 				04A47BFB28B8C92D0017B26E /* Assets.xcassets in Resources */,
@@ -673,6 +688,7 @@
 				049D400F28BDAB9800606A0E /* HomeView.swift in Sources */,
 				041E0A9228D457540076A5F4 /* ListActivityTrending.swift in Sources */,
 				0444622328D17FE200F3B7F2 /* ActivityItem.swift in Sources */,
+				B5B5223628DB5B0E00FD013F /* ApplicationListMenuView.swift in Sources */,
 				04A47BF728B8C92B0017B26E /* HelloActivityApp.swift in Sources */,
 				04F3906228D490B6002D92BA /* UserLoginResponse.swift in Sources */,
 				041E0A8A28D30AA70076A5F4 /* ListActivityArea.swift in Sources */,

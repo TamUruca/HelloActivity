@@ -28,7 +28,7 @@ final class LoginViewModel: ObservableObject {
     func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
         
-        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams()) { (success, IsFailResponseError, data) -> (Void) in
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams(), typeContentHeader: .json) { (success, IsFailResponseError, data) -> (Void) in
             progressApp.isShowProgressView = false
             if success && !IsFailResponseError , let data = data {
                guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
@@ -43,7 +43,10 @@ final class LoginViewModel: ObservableObject {
                 }
             } else if let data = data {
                 progressApp.isShowProgressView = false
-                self.error = .errorAPI(error: data as! String)
+                if let json = data as? [String: Any] {
+                    let message = json["message"] as? String ?? ""
+                    self.error = .errorAPI(error: message)
+                }
                 completion(false)
             }
         }

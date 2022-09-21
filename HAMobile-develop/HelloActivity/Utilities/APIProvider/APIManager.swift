@@ -150,31 +150,31 @@ class ApiManager {
             "Content-Type": typeContentHeader.stringDescription ]
     }
     
-    private func getDefaultHeaderTypeJSON() -> HTTPHeaders {
-        var headers = HTTPHeaders()
-//        headers["Content-Type"] = "application/json; charset=UTF-8"
-        if let accessToken = UserDefaultUtils.shared.get(key: UserDefaultsKeys.token) {
-            headers["Authorization"] = "Bearer " + (accessToken as? String ?? "")
-//            headers["X-ApiToken"] = accessToken
-        }
-//        headers["Accept"] = "application/vnd.api+json"
+    private func getDefaultHeaderTypeJSON(typeContentHeader: TypeContentHeader? = nil) -> HTTPHeaders {
         
+        var headers = HTTPHeaders()
+        guard let type = typeContentHeader else {
+            return headers
+        }
+        headers["Accept"] = "application/json";
+        headers["Content-Type"] = type.stringDescription;
+        guard let accessToken = UserDefaultUtils.shared.get(key: UserDefaultsKeys.token) else {
+            return headers
+        }
+        headers["Authorization"] = "Bearer \(accessToken)";
         return headers
+        
     }
 }
 
 // MARK: - Login and authen
 extension ApiManager {
     
-    public func requestAPIJSON(api: ClientApi, parameters: [String : Any]? = nil, headers: HTTPHeaders? = nil, encoding: ParameterEncoding? = nil, completion: RequestCompletion) {
+    public func requestAPIJSON(api: ClientApi, parameters: [String : Any]? = nil, typeContentHeader: TypeContentHeader? = nil, encoding: ParameterEncoding? = nil, completion: RequestCompletion) {
         let url = api.baseURL + api.path
 
-        let finalHeaders: HTTPHeaders = {
-            if let headers = headers {
-                return headers
-            }
-            return getDefaultHeaderTypeJSON()
-        }()
+        let finalHeaders: HTTPHeaders = getDefaultHeaderTypeJSON(typeContentHeader: typeContentHeader)
+        
         let finalEncoding: ParameterEncoding = {
             if let encoding = encoding {
                 return encoding

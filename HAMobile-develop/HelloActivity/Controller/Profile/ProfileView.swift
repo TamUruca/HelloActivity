@@ -84,7 +84,7 @@ struct ProfileView: View {
             HStack(spacing: 50) {
                 Spacer()
                     Button {
-                        print("string_application_list_screen_profile")
+                       showApplicationListView()
                     } label: {
                         VStack {
                             Image(systemName: "case")
@@ -101,7 +101,6 @@ struct ProfileView: View {
                 ZStack {
                     Button {
                         showInboxView()
-                       
                     } label: {
                         VStack {
                             Image(systemName: "envelope")
@@ -295,6 +294,11 @@ struct ProfileView: View {
     func showInboxView() {
         progressApp.isShowHeaderMainApp = false
         tabbarRouter.currentPage = .inbox
+    }
+    
+    func showApplicationListView() {
+        progressApp.isShowHeaderMainApp = false
+        tabbarRouter.currentPage = .applicationList
     }
 }
 

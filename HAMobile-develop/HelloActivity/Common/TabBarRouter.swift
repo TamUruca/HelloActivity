@@ -22,4 +22,5 @@ enum Page {
     case login
     case newRegister
     case inbox
+    case applicationList
 }

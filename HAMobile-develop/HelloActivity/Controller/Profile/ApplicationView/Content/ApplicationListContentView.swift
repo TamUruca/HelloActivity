@@ -1,5 +1,5 @@
 //
-//  InboxView.swift
+//  ApplicationListContentView.swift
 //  HelloActivity
 //
 //  Created by Uruca's Macbook on 9/21/22.
@@ -7,27 +7,8 @@
 
 import SwiftUI
 
-enum TypeItemInbox {
-    case normal
-    case unRead
-    case read
-    
-    var color: Color {
-        switch self {
-        case .normal:
-            return .gray
-        case .unRead:
-            return .red
-        case .read:
-            return .blue
-        }
-    }
-}
+struct ApplicationListContentView: View {
 
-struct InboxView: View {
-
-    @ObservedObject var tabbarRouter: TabBarRouter
-    @StateObject private var registerVM = RegisterViewModel()
     @EnvironmentObject var progressApp: ProgressApp
     let inboxList: [InboxItem] = {
         var array: [InboxItem] = []
@@ -42,62 +23,15 @@ struct InboxView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                // header title view
-                headerTitleView(geometry)
                 // content scroll view
                 contentScrollView(geometry)
             }
             .frame(height: geometry.size.height)
         }
         .disabled(progressApp.isShowProgressView)
-        .alert(item: $registerVM.error) { error in
-            Alert(title: Text("Register Error"), message: Text(error.localizedDescription))
-        }
-    }
-    
-    @ViewBuilder func buildLable(geometry: GeometryProxy, text: String) -> some View {
-        HStack(spacing: 10){
-            // lable
-            Text(text)
-            Text("*")
-        }
-        .frame(width: geometry.size.width - 40, height: 20, alignment: .leading)
-    }
-    
-    @ViewBuilder func CustomTextField(geometry: GeometryProxy, textHint: String, valueText: Binding<String>) -> some View {
-        HStack {
-            TextField(textHint, text: valueText)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.gray, lineWidth: 1)
-                )
-        }
-        .frame(width: geometry.size.width - 40, height: 20, alignment: .leading)
-        .padding([.top, .bottom], 15)
     }
     
     //MARK: Views children
-    fileprivate func headerTitleView(_ geometry: GeometryProxy) -> some View {
-        return ZStack {
-            Text(R.string.localizable.title_screen_inbox())
-                .font(.system(size: 25))
-            LineView(colorLine: .gray)
-                .frame(height: 1)
-                .padding(.top, 60)
-            Button {
-                back()
-            } label: {
-                Image(uiImage: R.image.ic_check_success()!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading, 10)
-                    .frame(width: 30, height: 30)
-            }
-            .frame(width: geometry.size.width, alignment: .leading)
-        }
-        .frame(width: geometry.size.width)
-    }
     
     fileprivate func contentScrollView(_ geometry: GeometryProxy) -> some View {
         return ScrollView(showsIndicators: false) {
@@ -163,15 +97,10 @@ struct InboxView: View {
             Spacer()
         }
     }
-    
-    func back() {
-        progressApp.isShowHeaderMainApp = true
-        tabbarRouter.currentPage = .profile
-    }
 }
 
-struct InboxView_Previews: PreviewProvider {
+struct ApplicationListContentView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxView(tabbarRouter: TabBarRouter())
+        ApplicationListContentView()
     }
 }

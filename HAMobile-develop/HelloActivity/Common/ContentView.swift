@@ -51,6 +51,10 @@ struct ContentView: View {
             InboxView(tabbarRouter: tabbarRouter)
                 .environmentObject(tabbarRouter)
                 .environmentObject(progressApp)
+        case .applicationList:
+            ApplicationListView(tabbarRouter: tabbarRouter)
+                .environmentObject(tabbarRouter)
+                .environmentObject(progressApp)
         }
     }
     

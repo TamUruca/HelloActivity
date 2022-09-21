@@ -195,7 +195,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 46 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 50 localization keys.
     struct localizable {
       /// en translation: Can not convert data !
       ///
@@ -364,11 +364,23 @@ struct R: Rswift.Validatable {
       /// en translation: 申込リスト
       ///
       /// Locales: en, ja
+      static let menu_item_application_list_screen_application_list = Rswift.StringResource(key: "menu_item_application_list_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
       static let string_application_list_screen_profile = Rswift.StringResource(key: "string_application_list_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 申込リスト
       ///
       /// Locales: en, ja
       static let string_button_application_list_screen_profile = Rswift.StringResource(key: "string_button_application_list_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static let title_screen_application_list = Rswift.StringResource(key: "title_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 相談 / 問合せ
+      ///
+      /// Locales: en, ja
+      static let menu_item_consultation_inquiry_screen_application_list = Rswift.StringResource(key: "menu_item_consultation_inquiry_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 設定
       ///
       /// Locales: en, ja
@@ -377,6 +389,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_button_withdraw_screen_profile = Rswift.StringResource(key: "string_button_withdraw_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 過去・キャンセル
+      ///
+      /// Locales: en, ja
+      static let menu_item_past_cancen_screen_application_list = Rswift.StringResource(key: "menu_item_past_cancen_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 閲覧履歴
       ///
       /// Locales: en, ja
@@ -1000,6 +1016,21 @@ struct R: Rswift.Validatable {
       /// en translation: 申込リスト
       ///
       /// Locales: en, ja
+      static func menu_item_application_list_screen_application_list(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("menu_item_application_list_screen_application_list", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "menu_item_application_list_screen_application_list"
+        }
+
+        return NSLocalizedString("menu_item_application_list_screen_application_list", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
       static func string_application_list_screen_profile(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("string_application_list_screen_profile", bundle: hostingBundle, comment: "")
@@ -1025,6 +1056,36 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_button_application_list_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 申込リスト
+      ///
+      /// Locales: en, ja
+      static func title_screen_application_list(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("title_screen_application_list", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "title_screen_application_list"
+        }
+
+        return NSLocalizedString("title_screen_application_list", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 相談 / 問合せ
+      ///
+      /// Locales: en, ja
+      static func menu_item_consultation_inquiry_screen_application_list(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("menu_item_consultation_inquiry_screen_application_list", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "menu_item_consultation_inquiry_screen_application_list"
+        }
+
+        return NSLocalizedString("menu_item_consultation_inquiry_screen_application_list", bundle: bundle, comment: "")
       }
 
       /// en translation: 設定
@@ -1055,6 +1116,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_button_withdraw_screen_profile", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 過去・キャンセル
+      ///
+      /// Locales: en, ja
+      static func menu_item_past_cancen_screen_application_list(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("menu_item_past_cancen_screen_application_list", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "menu_item_past_cancen_screen_application_list"
+        }
+
+        return NSLocalizedString("menu_item_past_cancen_screen_application_list", bundle: bundle, comment: "")
       }
 
       /// en translation: 閲覧履歴

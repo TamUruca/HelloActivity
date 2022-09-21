@@ -27,6 +27,8 @@ struct ProfileView: View {
     //@Binding var selection: Int
     @SceneStorage("selectedTab") var selection = 3
     @EnvironmentObject var tabbarRouter: TabBarRouter
+    @StateObject private var loginVM: LogoutViewModel = LogoutViewModel()
+    @EnvironmentObject var progressApp: ProgressApp
     
     var body: some View {
         GeometryReader { geometry in
@@ -260,7 +262,7 @@ struct ProfileView: View {
     @ViewBuilder func buttonLogout(geometry: GeometryProxy) -> some View {
         VStack() {
             Button {
-                print("logout")
+                logout() 
             } label: {
                 Text(R.string.localizable.string_button_logout_screen_profile())
                     .frame(
@@ -276,6 +278,17 @@ struct ProfileView: View {
                     .stroke(.blue, lineWidth: 1)
             )
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+        }
+    }
+    
+    func logout() {
+        loginVM.postAPILogout(progressApp: progressApp){ isSuccess in
+            if isSuccess {
+                UserDefaultUtils.shared.delete(key: UserDefaultsKeys.token)
+                tabbarRouter.currentPage = .login
+            } else {
+                print(loginVM.error?.errorDescription ?? "")
+            }
         }
     }
 }

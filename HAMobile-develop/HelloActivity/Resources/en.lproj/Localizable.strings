@@ -9,6 +9,7 @@
 
 // network
 "error_network"                                                    = "Please connect network";
+"can_not_convert_data"                                              = "Can not convert data !";
 
 // screen logon
 "title_screen_login"                                                = "ログイン";
@@ -44,6 +45,7 @@
 "string_inbox_screen_profile"                                      = "受信トレイ";
 
 "string_activity_screen_profile"                                    = "アクティビティ";
+
 "string_button_application_list_screen_profile"                       = "申込リスト";
 "string_button_inbox_screen_profile"                                = "受信トレイ";
 "string_button_favorite_screen_profile"                             = "お気に入り";
@@ -51,6 +53,7 @@
 "string_button_reviews_submited_screen_profile"                      = "投稿した口コミ";
 
 "string_account_screen_profile"                                    = "アカウント";
+
 "string_button_member_information_screen_profile"                    = "会員情報";
 "string_button_credit_cart_information_screen_profile"                = "クレジットカード情報";
 "string_button_email_address_change_screen_profile"                  = "メールアドレスの変更";
@@ -58,8 +61,10 @@
 "string_button_setting_screen_profile"                              = "設定";
 
 "string_support_screen_profile"                                    = "サポート";
+
 "string_button_frequenrly_asked_questions_screen_profile"             = "よくある質問";
 "string_button_inquiry_screen_profile"                              = "お問い合わせ";
 "string_button_withdraw_screen_profile"                             = "退会する";
+
 "string_button_logout_screen_profile"                               = "ログアウト";
 

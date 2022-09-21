@@ -27,7 +27,7 @@ struct RegisterCredentials: Codable {
 
 class RegisterViewModel: ObservableObject {
     @Published var credentials = RegisterCredentials()
-    @Published var error: AuthenticationRegister.AuthenticationRegisterError?
+    @Published var error: ErrorApp.ErrorProvider?
     @Published var userLogindata: UserLoginResponse?
     
     var registerDisabled: Bool {

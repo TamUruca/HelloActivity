@@ -1,16 +1,16 @@
 //
-//  AuthenticationLogin.swift
+//  ErrorApp.swift
 //  HelloActivity
 //
-//  Created by vuminhtam on 9/18/22.
+//  Created by Uruca's Macbook on 9/21/22.
 //
 
 import SwiftUI
 
-class AuthenticationLogin: ObservableObject {
+class ErrorApp: ObservableObject {
     @Published var isValidated = false
     
-    enum AuthenticationLoginError: Error, LocalizedError, Identifiable {
+    enum ErrorProvider: Error, LocalizedError, Identifiable {
         case invalidaCredentials
         case errorAPI(error: String)
         
@@ -21,7 +21,7 @@ class AuthenticationLogin: ObservableObject {
         var errorDescription: String? {
             switch self {
             case .invalidaCredentials:
-                return NSLocalizedString("chua login ok nha !!", comment: "")
+                return NSLocalizedString("invalida Credentials !!", comment: "")
             case .errorAPI(let error):
                 return NSLocalizedString(error, comment: "")
             }

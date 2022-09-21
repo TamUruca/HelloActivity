@@ -186,8 +186,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 44 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 45 localization keys.
     struct localizable {
+      /// en translation: Can not convert data !
+      ///
+      /// Locales: en, ja
+      static let can_not_convert_data = Rswift.StringResource(key: "can_not_convert_data", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: Email address
       ///
       /// Locales: en, ja
@@ -364,6 +368,21 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let string_button_browsing_history_screen_profile = Rswift.StringResource(key: "string_button_browsing_history_screen_profile", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+
+      /// en translation: Can not convert data !
+      ///
+      /// Locales: en, ja
+      static func can_not_convert_data(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("can_not_convert_data", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "can_not_convert_data"
+        }
+
+        return NSLocalizedString("can_not_convert_data", bundle: bundle, comment: "")
+      }
 
       /// en translation: Email address
       ///

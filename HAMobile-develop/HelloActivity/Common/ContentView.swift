@@ -32,7 +32,9 @@ struct ContentView: View {
         case .chat:
             ChatView().environmentObject(tabbarRouter)
         case .profile:
-            ProfileView().environmentObject(tabbarRouter)
+            ProfileView()
+                .environmentObject(tabbarRouter)
+                .environmentObject(progressApp)
         case .setting:
             SettingView().environmentObject(tabbarRouter)
         case .notification:

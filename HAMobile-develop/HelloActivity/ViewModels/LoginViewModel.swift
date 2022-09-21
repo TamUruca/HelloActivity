@@ -17,7 +17,7 @@ struct LoginCredentials: Codable {
 final class LoginViewModel: ObservableObject {
     
     @Published var credentials = LoginCredentials()
-    @Published var error: AuthenticationLogin.AuthenticationLoginError?
+    @Published var error: ErrorApp.ErrorProvider?
     @Published var userLogindata: UserLoginResponse?
     
     var loginDisabled: Bool {

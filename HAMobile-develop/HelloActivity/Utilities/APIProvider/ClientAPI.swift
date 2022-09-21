@@ -12,6 +12,7 @@ enum ClientApi {
     case login
     case register
     case areas
+    case logout
 }
 
 extension ClientApi: TargetType {
@@ -30,6 +31,9 @@ extension ClientApi: TargetType {
             //other
         case .areas:
             return "/api/app/home/areas"
+            // logout
+        case .logout:
+            return "/api/app/user/signout"
         }
     }
     
@@ -41,6 +45,8 @@ extension ClientApi: TargetType {
             return .post
         case .areas:
             return .get
+        case .logout:
+            return .post
         }
     }
     

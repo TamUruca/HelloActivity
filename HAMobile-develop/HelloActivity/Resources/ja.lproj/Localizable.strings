@@ -9,6 +9,7 @@
 
 // network
 "error_network"                                                    = "Please connect network";
+"can_not_convert_data"                                              = "Can not convert data !";
 
 // screen logon
 "title_screen_login"                                                = "ログイン";

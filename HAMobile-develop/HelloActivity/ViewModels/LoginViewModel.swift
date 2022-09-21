@@ -28,14 +28,19 @@ final class LoginViewModel: ObservableObject {
     func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
         
-        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams(), typeContentHeader: .json) { (success, IsFailResponseError, data) -> (Void) in
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams(), typeContentHeader: .json) { [weak self] (success, IsFailResponseError, data, message) -> (Void) in
             progressApp.isShowProgressView = false
+            if !success, !message.isEmpty {
+                self?.error = .errorAPI(error: message)
+                completion(false)
+                return
+            }
             if success && !IsFailResponseError , let data = data {
                guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
                 let decoder = JSONDecoder()
                 do {
                     let userLogindata = try decoder.decode(UserLoginResponse.self, from: jsonData)
-                    self.userLogindata = userLogindata
+                    self?.userLogindata = userLogindata
                     UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: userLogindata.data.token)
                     completion(success)
                 } catch {
@@ -45,7 +50,7 @@ final class LoginViewModel: ObservableObject {
                 progressApp.isShowProgressView = false
                 if let json = data as? [String: Any] {
                     let message = json["message"] as? String ?? ""
-                    self.error = .errorAPI(error: message)
+                    self?.error = .errorAPI(error: message)
                 }
                 completion(false)
             }

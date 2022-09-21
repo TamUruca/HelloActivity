@@ -53,49 +53,27 @@ class RegisterViewModel: ObservableObject {
             break
         }
         
-        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.register, parameters: parameters, typeContentHeader: .urlncoded, encoding: URLEncoding.default) { (success, IsFailResponseError, data) -> (Void) in
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.register, parameters: parameters, typeContentHeader: .urlncoded, encoding: URLEncoding.default) { [weak self] (success, IsFailResponseError, data, message) -> (Void) in
             progressApp.isShowProgressView = false
+            if !success, !message.isEmpty {
+                self?.error = .errorAPI(error: message)
+                completion(false)
+                return
+            }
             if success && !IsFailResponseError , let data = data {
                 if let json = data as? [String: Any], let code = json["status"] as? Int, code == 200 {
                     completion(true)
                 } else {
-                    self.error = .errorAPI(error: "Can not pass data !")
+                    self?.error = .errorAPI(error: "Can not pass data !")
                 }
-//               guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
-//                let decoder = JSONDecoder()
-//                do {
-//                    let userLogindata = try decoder.decode(UserLoginResponse.self, from: jsonData)
-//                    self.userLogindata = userLogindata
-//                    UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: userLogindata.data.token)
-//                    completion(success)
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
             } else if let data = data {
                 progressApp.isShowProgressView = false
                 if let json = data as? [String: Any] {
                     let message = json["message"] as? String ?? ""
-                    self.error = .errorAPI(error: message)
+                    self?.error = .errorAPI(error: message)
                 }
                 completion(false)
             }
         }
-        
-//        progressApp.isShowProgressView = true
-//        ApiManager.shareInstance.postAPIRegister(credentials: credentials, success: { [weak self] (isSuccess, data) in
-//            progressApp.isShowProgressView = false
-//            guard isSuccess else {
-//                completion(false)
-//                return
-//            }
-//            self?.userData = data
-//            completion(isSuccess)
-//        }, failured: { [weak self] (message) in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//                progressApp.isShowProgressView = false
-//                self?.error = .errorAPI(error: message)
-//                completion(false)
-//            }
-//        })
     }
 }

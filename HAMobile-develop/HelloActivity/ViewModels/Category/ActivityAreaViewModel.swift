@@ -13,7 +13,7 @@ class ActivityAreaViewModel: ObservableObject {
     // MARK: - Call API
     func getListActivityArea() {
 //        progressApp.isShowProgressView = true
-        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.areas) { (success, IsFailResponseError, data) -> (Void) in
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.areas) { (success, IsFailResponseError, data, message) -> (Void) in
             if success && !IsFailResponseError , let data = data {
                guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
                 let decoder = JSONDecoder()

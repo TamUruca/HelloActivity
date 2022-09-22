@@ -74,6 +74,6 @@
 // screen application list
 "title_screen_application_list"                                     = "申込リスト";
 "menu_item_application_list_screen_application_list"                  = "申込リスト";
-"menu_item_past_cancen_screen_application_list"                      = "過去・キャンセル";
+"menu_item_past_cancel_screen_application_list"                      = "過去・キャンセル";
 "menu_item_consultation_inquiry_screen_application_list"              = "相談 / 問合せ";
 

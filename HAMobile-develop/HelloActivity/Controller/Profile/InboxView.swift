@@ -88,11 +88,11 @@ struct InboxView: View {
             Button {
                 back()
             } label: {
-                Image(uiImage: R.image.ic_check_success()!)
+                Image(uiImage: R.image.ic_back()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.leading, 10)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 40, height: 40)
             }
             .frame(width: geometry.size.width, alignment: .leading)
         }

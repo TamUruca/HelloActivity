@@ -73,6 +73,11 @@
 		FD99E77928DB143B00116D23 /* InboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E77828DB143B00116D23 /* InboxItem.swift */; };
 		FD99E77B28DB200C00116D23 /* ApplicationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E77A28DB200C00116D23 /* ApplicationListView.swift */; };
 		FD99E77E28DB2A0200116D23 /* ApplicationListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E77D28DB2A0200116D23 /* ApplicationListContentView.swift */; };
+		FD99E78128DC0F8400116D23 /* ApplicationListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78028DC0F8400116D23 /* ApplicationListItemView.swift */; };
+		FD99E78328DC0F8F00116D23 /* ApplicationListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD99E78228DC0F8F00116D23 /* ApplicationListItemView.xib */; };
+		FD99E78528DC1A4600116D23 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78428DC1A4600116D23 /* ApplicationItem.swift */; };
+		FD99E78728DC37E800116D23 /* PastCancelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78628DC37E800116D23 /* PastCancelContentView.swift */; };
+		FD99E78928DC38B000116D23 /* ConsultationInquiryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +171,11 @@
 		FD99E77828DB143B00116D23 /* InboxItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxItem.swift; sourceTree = "<group>"; };
 		FD99E77A28DB200C00116D23 /* ApplicationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListView.swift; sourceTree = "<group>"; };
 		FD99E77D28DB2A0200116D23 /* ApplicationListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListContentView.swift; sourceTree = "<group>"; };
+		FD99E78028DC0F8400116D23 /* ApplicationListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListItemView.swift; sourceTree = "<group>"; };
+		FD99E78228DC0F8F00116D23 /* ApplicationListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicationListItemView.xib; sourceTree = "<group>"; };
+		FD99E78428DC1A4600116D23 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
+		FD99E78628DC37E800116D23 /* PastCancelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastCancelContentView.swift; sourceTree = "<group>"; };
+		FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationInquiryContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +364,7 @@
 				04C6E66828C8425500317F2D /* ChatItem.swift */,
 				0493B3DE28CF3E700086B816 /* CategoryItem.swift */,
 				FD99E77828DB143B00116D23 /* InboxItem.swift */,
+				FD99E78428DC1A4600116D23 /* ApplicationItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,6 +441,8 @@
 			children = (
 				B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */,
 				B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */,
+				FD99E78028DC0F8400116D23 /* ApplicationListItemView.swift */,
+				FD99E78228DC0F8F00116D23 /* ApplicationListItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -484,6 +497,8 @@
 			children = (
 				B5B5223428DB5A6900FD013F /* Views */,
 				FD99E77D28DB2A0200116D23 /* ApplicationListContentView.swift */,
+				FD99E78628DC37E800116D23 /* PastCancelContentView.swift */,
+				FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -600,6 +615,7 @@
 				B5B5223828DB5B2400FD013F /* ApplicationListMenuView.xib in Resources */,
 				04A47BFE28B8C92D0017B26E /* Preview Assets.xcassets in Resources */,
 				FD99E76328D8102700116D23 /* Localizable.strings in Resources */,
+				FD99E78328DC0F8F00116D23 /* ApplicationListItemView.xib in Resources */,
 				04A47BFB28B8C92D0017B26E /* Assets.xcassets in Resources */,
 				049D400728BC526C00606A0E /* CollectionViewCell.xib in Resources */,
 			);
@@ -690,6 +706,7 @@
 			files = (
 				FD99E76028D8016500116D23 /* R.generated.swift in Sources */,
 				04F3904A28D49034002D92BA /* Application.swift in Sources */,
+				FD99E78728DC37E800116D23 /* PastCancelContentView.swift in Sources */,
 				045BCE9428D979A4006C2430 /* TargetType.swift in Sources */,
 				04F3905828D4906A002D92BA /* FBLoginButton.swift in Sources */,
 				FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */,
@@ -716,6 +733,7 @@
 				04A47BF728B8C92B0017B26E /* HelloActivityApp.swift in Sources */,
 				04F3906228D490B6002D92BA /* UserLoginResponse.swift in Sources */,
 				041E0A8A28D30AA70076A5F4 /* ListActivityArea.swift in Sources */,
+				FD99E78128DC0F8400116D23 /* ApplicationListItemView.swift in Sources */,
 				045BCE9C28D9A449006C2430 /* ActivityAreaViewModel.swift in Sources */,
 				041E0A8828D2DA350076A5F4 /* UIGrid.swift in Sources */,
 				041E0A8C28D311080076A5F4 /* BannerTab.swift in Sources */,
@@ -724,6 +742,7 @@
 				FD99E77528DAEB5F00116D23 /* ErrorApp.swift in Sources */,
 				049D400B28BDAAA400606A0E /* TabItem.swift in Sources */,
 				04F3904228D49014002D92BA /* LoginViewModel.swift in Sources */,
+				FD99E78928DC38B000116D23 /* ConsultationInquiryContentView.swift in Sources */,
 				041E0A9628D45BFB0076A5F4 /* ListActivityFavorite.swift in Sources */,
 				049D400628BC526C00606A0E /* CollectionViewCell.swift in Sources */,
 				FD99E77928DB143B00116D23 /* InboxItem.swift in Sources */,
@@ -737,6 +756,7 @@
 				0493B3DF28CF3E700086B816 /* CategoryItem.swift in Sources */,
 				FD99E77228DAE93600116D23 /* ProfileViewModel.swift in Sources */,
 				04F3905928D4906A002D92BA /* LineLoginButton.swift in Sources */,
+				FD99E78528DC1A4600116D23 /* ApplicationItem.swift in Sources */,
 				049D401B28BEEBB200606A0E /* NotificationView.swift in Sources */,
 				04F3906928D49170002D92BA /* RegisterViewModel.swift in Sources */,
 				04F3905A28D4906A002D92BA /* RegisterView.swift in Sources */,

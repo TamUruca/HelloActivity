@@ -29,14 +29,18 @@ struct ApplicationListView: View {
     @ObservedObject var tabbarRouter: TabBarRouter
     @StateObject private var registerVM = RegisterViewModel()
     @EnvironmentObject var progressApp: ProgressApp
-    let applicationListMenu = [R.string.localizable.menu_item_application_list_screen_application_list(),
-                               R.string.localizable.menu_item_past_cancen_screen_application_list(),
-                               R.string.localizable.menu_item_consultation_inquiry_screen_application_list()]
-    @State var currentIndex = 0
     @State var menuCurrentIndex = 0
     
     @ViewBuilder var applicationListContentView: some View {
         ApplicationListContentView()
+    }
+    
+    @ViewBuilder var pastCancelContentView: some View {
+        PastCancelContentView()
+    }
+    
+    @ViewBuilder var consultationInquiryContentView: some View {
+        ConsultationInquiryContentView()
     }
     
     var body: some View {
@@ -47,7 +51,11 @@ struct ApplicationListView: View {
                 headerMenuView(geometry)
                 ZStack {
                     applicationListContentView
-                        .opacity(currentIndex == 0 ? 1 : 0)
+                        .opacity(menuCurrentIndex == 0 ? 1 : 0)
+                    pastCancelContentView
+                        .opacity(menuCurrentIndex == 1 ? 1 : 0)
+                    consultationInquiryContentView
+                        .opacity(menuCurrentIndex == 2 ? 1 : 0)
                 }
             }
             .frame(height: geometry.size.height)
@@ -69,49 +77,16 @@ struct ApplicationListView: View {
             Button {
                 back()
             } label: {
-                Image(uiImage: R.image.ic_check_success()!)
+                Image(uiImage: R.image.ic_back()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.leading, 10)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 40, height: 40)
             }
             .frame(width: geometry.size.width, alignment: .leading)
         }
         .frame(width: geometry.size.width)
     }
-    
-//    fileprivate func headerMenuView(_ geometry: GeometryProxy) -> some View {
-//        return ZStack{
-//            LineView(colorLine: .gray)
-//                .frame(height: 1)
-//                .padding(.top, 15)
-//                .frame(width: geometry.size.width - 80, height: 50)
-//            HStack {
-//                    ForEach(0..<applicationListMenu.count) { index in
-//                        if index != 0 {
-//                            Spacer()
-//                        }
-//                        Button {
-//                            currentIndex = index
-//                        } label: {
-//                            ZStack {
-//                                Text(applicationListMenu[index])
-//                                    .foregroundColor(.blue)
-//                                    .foregroundColor(currentIndex == index ? .red : .gray)
-//                                LineView(colorLine: .red)
-//                                    .frame(height: 1)
-//                                    .padding(.top, 30)
-//                                    .opacity(currentIndex == index ? 1 : 0)
-//                            }
-//                            .fixedSize()
-//                            .padding(EdgeInsets(top: -15, leading: -5, bottom: 0, trailing: 0))
-//                        }
-//                    }
-//            }
-//            .frame(width: geometry.size.width - 80, height: 50)
-//
-//        }
-//    }
     
     fileprivate func headerMenuView(_ geometry: GeometryProxy) -> some View {
         return VStack{

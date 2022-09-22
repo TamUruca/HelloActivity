@@ -21,6 +21,9 @@ struct ApplicationListMenuViewCustom: UIViewRepresentable {
     func makeUIView(context: Context) -> ApplicationListMenuView {
         let view = ApplicationListMenuView()
         view.delegate = context.coordinator
+        view.firstLabel.text = R.string.localizable.menu_item_application_list_screen_application_list()
+        view.secondLabel.text = R.string.localizable.menu_item_past_cancel_screen_application_list()
+        view.threeLabel.text = R.string.localizable.menu_item_consultation_inquiry_screen_application_list()
         return view
     }
 
@@ -49,30 +52,32 @@ protocol ApplicationListMenuViewDelegate: AnyObject {
     func tapAction(applicationListMenuView: ApplicationListMenuView, index: Int)
 }
 
+enum ApllicationListMenu {
+    case applicationList
+    case pastCancel
+    case consultationInquiry
+}
+
 class ApplicationListMenuView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var labelFirst: UILabel!
-    @IBOutlet weak var labelSecond: UILabel!
-    @IBOutlet weak var labelThree: UILabel!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var threeLabel: UILabel!
     @IBOutlet weak var firstLineView: UIView!
     @IBOutlet weak var secondLineView: UIView!
     @IBOutlet weak var threeLineView: UIView!
-    @IBOutlet weak var firstLabelNSLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var secondLabelNSLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var threeLabelNSLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var firstViewWidthNSLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var threeViewWidthNSLayoutConstraint: NSLayoutConstraint!
     
     weak var delegate: ApplicationListMenuViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        firstLabelNSLayoutConstraint.constant =  labelFirst.intrinsicContentSize.width + 10
-        secondLabelNSLayoutConstraint.constant =  labelSecond.intrinsicContentSize.width + 10
-        threeLabelNSLayoutConstraint.constant =  labelThree.intrinsicContentSize.width + 10
-        firstLineView.isHidden = false
-        secondLineView.isHidden = true
-        threeLineView.isHidden = true
+        firstViewWidthNSLayoutConstraint.constant = firstLabel.intrinsicContentSize.width + 15
+        threeViewWidthNSLayoutConstraint.constant = threeLabel.intrinsicContentSize.width + 15
+        updateUI(type: .applicationList)
     }
     
     required init?(coder: NSCoder) {
@@ -90,22 +95,45 @@ class ApplicationListMenuView: UIView {
     @IBAction func selectAction(_ sender: Any) {
         guard let bt = sender as? UIButton else { return }
         if bt.tag == 0 {
-            firstLineView.isHidden = false
-            secondLineView.isHidden = true
-            threeLineView.isHidden = true
+            updateUI(type: .applicationList)
         }
         if bt.tag == 1 {
-            firstLineView.isHidden = true
-            secondLineView.isHidden = false
-            threeLineView.isHidden = true
+            updateUI(type: .pastCancel)
         }
         if bt.tag == 2 {
-            firstLineView.isHidden = true
-            secondLineView.isHidden = true
-            threeLineView.isHidden = false
+            updateUI(type: .consultationInquiry)
         }
         if let delegate = delegate {
             delegate.tapAction(applicationListMenuView: self, index: bt.tag)
+        }
+    }
+    
+    func updateUI(type: ApllicationListMenu) {
+        switch type {
+        case .applicationList:
+            firstLineView.isHidden = false
+            firstLabel.textColor = .red
+            
+            secondLabel.textColor = .gray
+            threeLabel.textColor = .gray
+            secondLineView.isHidden = true
+            threeLineView.isHidden = true
+        case .pastCancel:
+            secondLineView.isHidden = false
+            secondLabel.textColor = .red
+            
+            firstLabel.textColor = .gray
+            threeLabel.textColor = .gray
+            firstLineView.isHidden = true
+            threeLineView.isHidden = true
+        case .consultationInquiry:
+            threeLineView.isHidden = false
+            threeLabel.textColor = .red
+            
+            firstLabel.textColor = .gray
+            secondLabel.textColor = .gray
+            firstLineView.isHidden = true
+            secondLineView.isHidden = true
         }
     }
 }

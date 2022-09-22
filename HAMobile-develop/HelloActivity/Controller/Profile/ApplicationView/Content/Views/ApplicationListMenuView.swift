@@ -58,18 +58,16 @@ class ApplicationListMenuView: UIView {
     @IBOutlet weak var firstLineView: UIView!
     @IBOutlet weak var secondLineView: UIView!
     @IBOutlet weak var threeLineView: UIView!
-    @IBOutlet weak var firstLabelNSLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var secondLabelNSLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var threeLabelNSLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var firstViewWidthNSLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var threeViewWidthNSLayoutConstraint: NSLayoutConstraint!
     
     weak var delegate: ApplicationListMenuViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        firstLabelNSLayoutConstraint.constant =  labelFirst.intrinsicContentSize.width + 10
-        secondLabelNSLayoutConstraint.constant =  labelSecond.intrinsicContentSize.width + 10
-        threeLabelNSLayoutConstraint.constant =  labelThree.intrinsicContentSize.width + 10
+        firstViewWidthNSLayoutConstraint.constant = labelFirst.intrinsicContentSize.width + 15
+        threeViewWidthNSLayoutConstraint.constant = labelThree.intrinsicContentSize.width + 15
         firstLineView.isHidden = false
         secondLineView.isHidden = true
         threeLineView.isHidden = true

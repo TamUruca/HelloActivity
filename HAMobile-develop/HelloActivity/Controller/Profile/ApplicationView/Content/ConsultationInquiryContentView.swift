@@ -1,5 +1,5 @@
 //
-//  ApplicationListContentView.swift
+//  PastCancelContentView.swift
 //  HelloActivity
 //
 //  Created by Uruca's Macbook on 9/21/22.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ApplicationListContentView: View {
+struct ConsultationInquiryContentView: View {
 
     @EnvironmentObject var progressApp: ProgressApp
     let applicationList: [ApplicationItem] = {
         var array: [ApplicationItem] = []
         
         for i in 1...15 {
-            let item = ApplicationItem(iconImage: "", title: "予約中", reservationNumber: "予約番号ST-000000000", country: "ハワイ・ホノルル", date: "2021年12月23日 10:00", description: "オプショナルツアータイトルを記載オプシ ョナルツアータイトルタイトルを記載", color: .red)
+            let item = ApplicationItem(iconImage: "", title: "予約中", reservationNumber: "予約番号ST-000000000", country: "ハワイ・ホノルル", date: "2021年12月23日 10:00", description: "オプショナルツアータイトルを記載オプシ ョナルツアータイトルタイトルを記載", color: .yellow)
             array.append(item)
         }
         return array
@@ -46,8 +46,8 @@ struct ApplicationListContentView: View {
     }
 }
 
-struct ApplicationListContentView_Previews: PreviewProvider {
+struct ConsultationInquiryContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ApplicationListContentView()
+        ConsultationInquiryContentView()
     }
 }

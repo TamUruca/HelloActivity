@@ -173,12 +173,22 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
+    /// Nib `ApplicationListItemView`.
+    static let applicationListItemView = _R.nib._ApplicationListItemView()
     /// Nib `ApplicationListMenuView`.
     static let applicationListMenuView = _R.nib._ApplicationListMenuView()
     /// Nib `CollectionViewCell`.
     static let collectionViewCell = _R.nib._CollectionViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ApplicationListItemView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.applicationListItemView) instead")
+    static func applicationListItemView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.applicationListItemView)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "ApplicationListMenuView", in: bundle)`
@@ -195,6 +205,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.collectionViewCell)
     }
     #endif
+
+    static func applicationListItemView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.applicationListItemView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
 
     static func applicationListMenuView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.applicationListMenuView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -406,7 +420,7 @@ struct R: Rswift.Validatable {
       /// en translation: 過去・キャンセル
       ///
       /// Locales: en, ja
-      static let menu_item_past_cancen_screen_application_list = Rswift.StringResource(key: "menu_item_past_cancen_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      static let menu_item_past_cancel_screen_application_list = Rswift.StringResource(key: "menu_item_past_cancel_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 閲覧履歴
       ///
       /// Locales: en, ja
@@ -1135,16 +1149,16 @@ struct R: Rswift.Validatable {
       /// en translation: 過去・キャンセル
       ///
       /// Locales: en, ja
-      static func menu_item_past_cancen_screen_application_list(preferredLanguages: [String]? = nil) -> String {
+      static func menu_item_past_cancel_screen_application_list(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("menu_item_past_cancen_screen_application_list", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("menu_item_past_cancel_screen_application_list", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "menu_item_past_cancen_screen_application_list"
+          return "menu_item_past_cancel_screen_application_list"
         }
 
-        return NSLocalizedString("menu_item_past_cancen_screen_application_list", bundle: bundle, comment: "")
+        return NSLocalizedString("menu_item_past_cancel_screen_application_list", bundle: bundle, comment: "")
       }
 
       /// en translation: 閲覧履歴
@@ -1191,7 +1205,25 @@ struct _R: Rswift.Validatable {
   #if os(iOS) || os(tvOS)
   struct nib: Rswift.Validatable {
     static func validate() throws {
+      try _ApplicationListItemView.validate()
       try _CollectionViewCell.validate()
+    }
+
+    struct _ApplicationListItemView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ApplicationListItemView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "banner", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'banner' is used in nib 'ApplicationListItemView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
     }
 
     struct _ApplicationListMenuView: Rswift.NibResourceType {

@@ -12,12 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplicationListMenuView" customModule="HelloActivity" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="TgY-aC-763"/>
+                <outlet property="firstLabel" destination="ufd-hK-hkO" id="h1x-hK-VIW"/>
                 <outlet property="firstLineView" destination="EE0-db-wt0" id="A9z-Ic-iPI"/>
                 <outlet property="firstViewWidthNSLayoutConstraint" destination="4Rc-Ok-F2e" id="sI5-nI-wQg"/>
-                <outlet property="labelFirst" destination="ufd-hK-hkO" id="NSc-2d-86B"/>
-                <outlet property="labelSecond" destination="qMD-Ec-kVA" id="IuQ-tj-zkz"/>
-                <outlet property="labelThree" destination="mfb-1S-g78" id="laf-z7-uzp"/>
+                <outlet property="secondLabel" destination="qMD-Ec-kVA" id="0Mi-Vx-A0h"/>
                 <outlet property="secondLineView" destination="Enn-nR-s9Q" id="hfS-R6-Adr"/>
+                <outlet property="threeLabel" destination="mfb-1S-g78" id="mcC-VL-9cz"/>
                 <outlet property="threeLineView" destination="qQx-1t-Yua" id="yqb-fz-XQN"/>
                 <outlet property="threeViewWidthNSLayoutConstraint" destination="0Mm-bo-VdT" id="lQb-8S-GE7"/>
             </connections>

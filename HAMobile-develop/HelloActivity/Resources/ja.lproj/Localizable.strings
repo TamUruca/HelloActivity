@@ -6,6 +6,9 @@
   
 */
 
+"facebook"                                                        = "Facebook";
+"google"                                                         = "Google";
+"line"                                                           = "Line";
 
 // network
 "error_network"                                                    = "Please connect network";

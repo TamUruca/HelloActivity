@@ -223,7 +223,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 50 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 53 localization keys.
     struct localizable {
       /// en translation: Can not convert data !
       ///
@@ -233,6 +233,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let label_email_address_screen_register = Rswift.StringResource(key: "label_email_address_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Facebook
+      ///
+      /// Locales: en, ja
+      static let facebook = Rswift.StringResource(key: "facebook", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: Facebookでログイン
       ///
       /// Locales: en, ja
@@ -240,7 +244,15 @@ struct R: Rswift.Validatable {
       /// en translation: Google
       ///
       /// Locales: en, ja
+      static let google = Rswift.StringResource(key: "google", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Google
+      ///
+      /// Locales: en, ja
       static let string_button_google_screen_login = Rswift.StringResource(key: "string_button_google_screen_login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: Line
+      ///
+      /// Locales: en, ja
+      static let line = Rswift.StringResource(key: "line", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: Line
       ///
       /// Locales: en, ja
@@ -456,6 +468,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("label_email_address_screen_register", bundle: bundle, comment: "")
       }
 
+      /// en translation: Facebook
+      ///
+      /// Locales: en, ja
+      static func facebook(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("facebook", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "facebook"
+        }
+
+        return NSLocalizedString("facebook", bundle: bundle, comment: "")
+      }
+
       /// en translation: Facebookでログイン
       ///
       /// Locales: en, ja
@@ -474,6 +501,21 @@ struct R: Rswift.Validatable {
       /// en translation: Google
       ///
       /// Locales: en, ja
+      static func google(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("google", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "google"
+        }
+
+        return NSLocalizedString("google", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Google
+      ///
+      /// Locales: en, ja
       static func string_button_google_screen_login(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("string_button_google_screen_login", bundle: hostingBundle, comment: "")
@@ -484,6 +526,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("string_button_google_screen_login", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Line
+      ///
+      /// Locales: en, ja
+      static func line(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("line", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "line"
+        }
+
+        return NSLocalizedString("line", bundle: bundle, comment: "")
       }
 
       /// en translation: Line

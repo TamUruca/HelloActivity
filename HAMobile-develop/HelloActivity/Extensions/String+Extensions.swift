@@ -7,6 +7,3 @@
 
 import Foundation
 
-var facebook = "Facebook"
-var google = "Google"
-var line = "Line"

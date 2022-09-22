@@ -179,7 +179,7 @@ struct LoginView: View {
     }
     
     func loginFacebook() {
-        if loginVM.isLoginSocial(type: facebook) {
+        if loginVM.isLoginSocial(type: R.string.localizable.facebook()) {
             tabbarRouter.currentPage = .newRegister
             return
         }
@@ -198,7 +198,7 @@ struct LoginView: View {
                 if !result!.isCancelled {
                     //login success facebook
                     loggedFB = true
-                    dataRegisterSocial = DataRegisterSocial(type: facebook, token: result?.token?.tokenString ?? "")
+                    dataRegisterSocial = DataRegisterSocial(type: R.string.localizable.facebook(), token: result?.token?.tokenString ?? "")
                     tabbarRouter.currentPage = .newRegister
                 }
             }
@@ -206,7 +206,7 @@ struct LoginView: View {
     }
     
     func loginGoogle() {
-        if loginVM.isLoginSocial(type: google) {
+        if loginVM.isLoginSocial(type: R.string.localizable.google()) {
             tabbarRouter.currentPage = .newRegister
             return
         }
@@ -218,13 +218,13 @@ struct LoginView: View {
                 }
                 // succeeded
                 loggedGoogle = true
-                dataRegisterSocial = DataRegisterSocial(type: google, token: signInUser.authentication.refreshToken)
+                dataRegisterSocial = DataRegisterSocial(type: R.string.localizable.google(), token: signInUser.authentication.refreshToken)
                 tabbarRouter.currentPage = .newRegister
             }
     }
     
     func loginLine() {
-        if loginVM.isLoginSocial(type: line) {
+        if loginVM.isLoginSocial(type: R.string.localizable.line()) {
             tabbarRouter.currentPage = .newRegister
             return
         }
@@ -234,7 +234,7 @@ struct LoginView: View {
             result in
             switch result {
             case .success(let loginResult):
-                dataRegisterSocial = DataRegisterSocial(type: line, token: loginResult.accessToken.value)
+                dataRegisterSocial = DataRegisterSocial(type:  R.string.localizable.line(), token: loginResult.accessToken.value)
                 tabbarRouter.currentPage = .newRegister
             case .failure(let err):
                 isError = true

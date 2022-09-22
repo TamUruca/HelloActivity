@@ -59,6 +59,8 @@ struct ApplicationListView: View {
                 }
             }
             .frame(height: geometry.size.height)
+            .background(Color.white)
+            .padding(.top, -1)
         }
         .disabled(progressApp.isShowProgressView)
         .alert(item: $registerVM.error) { error in

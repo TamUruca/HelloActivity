@@ -64,6 +64,7 @@
 		B5B5223628DB5B0E00FD013F /* ApplicationListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */; };
 		B5B5223828DB5B2400FD013F /* ApplicationListMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */; };
 		B5CF6A6E28D8BC3A006143CD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */; };
+		B5F8B3E728DCA49F008A6122 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B3E628DCA49F008A6122 /* Date+Extensions.swift */; };
 		FD99E76028D8016500116D23 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E75F28D8016500116D23 /* R.generated.swift */; };
 		FD99E76328D8102700116D23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD99E76528D8102700116D23 /* Localizable.strings */; };
 		FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E76828D8261300116D23 /* ProgressApp.swift */; };
@@ -161,6 +162,7 @@
 		B5B5223528DB5B0E00FD013F /* ApplicationListMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationListMenuView.swift; sourceTree = "<group>"; };
 		B5B5223728DB5B2400FD013F /* ApplicationListMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicationListMenuView.xib; sourceTree = "<group>"; };
 		B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		B5F8B3E628DCA49F008A6122 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		F5726FB04EBD7328E78841CD /* Pods-HelloActivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.release.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.release.xcconfig"; sourceTree = "<group>"; };
 		FCD60DE54D92D0F128430D42 /* Pods-HelloActivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloActivity.debug.xcconfig"; path = "Target Support Files/Pods-HelloActivity/Pods-HelloActivity.debug.xcconfig"; sourceTree = "<group>"; };
 		FD99E75F28D8016500116D23 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				04F3906428D490D7002D92BA /* View+Extensions.swift */,
 				B5CF6A6D28D8BC3A006143CD /* String+Extensions.swift */,
 				045BCE9D28D9BAEB006C2430 /* Encodable+Extensions.swift */,
+				B5F8B3E628DCA49F008A6122 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				FD99E76028D8016500116D23 /* R.generated.swift in Sources */,
 				04F3904A28D49034002D92BA /* Application.swift in Sources */,
 				FD99E78728DC37E800116D23 /* PastCancelContentView.swift in Sources */,
+				B5F8B3E728DCA49F008A6122 /* Date+Extensions.swift in Sources */,
 				045BCE9428D979A4006C2430 /* TargetType.swift in Sources */,
 				04F3905828D4906A002D92BA /* FBLoginButton.swift in Sources */,
 				FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */,

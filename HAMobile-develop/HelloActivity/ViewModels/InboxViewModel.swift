@@ -15,14 +15,13 @@ final class InboxViewModel: ObservableObject {
     @Published var inboxdata: [ItemInboxData] = []
 
     // MARK: - Call API
-    func getAPIInbox(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
+    func getAPIInbox(progressApp: ProgressApp) {
         progressApp.isShowProgressView = true
         
         ApiManager.shareInstance.requestAPIJSON(api: ClientApi.inbox, typeContentHeader: .json) { [weak self] (success, IsFailResponseError, data, message) -> (Void) in
             progressApp.isShowProgressView = false
             if !success, !message.isEmpty {
                 self?.error = .errorAPI(error: message)
-                completion(false)
                 return
             }
             if success && !IsFailResponseError , let data = data {
@@ -31,7 +30,6 @@ final class InboxViewModel: ObservableObject {
                 do {
                     let inboxDataResponse = try decoder.decode(InboxDataResponse.self, from: jsonData)
                     self?.inboxdata = inboxDataResponse.data
-                    completion(success)
                 } catch {
                     self?.error = .errorAPI(error: error.localizedDescription)
                 }
@@ -41,7 +39,6 @@ final class InboxViewModel: ObservableObject {
                     let message = json["message"] as? String ?? ""
                     self?.error = .errorAPI(error: message)
                 }
-                completion(false)
             }
         }
     }
@@ -51,5 +48,27 @@ final class InboxViewModel: ObservableObject {
             return false
         }
         return dataSocial.type == type
+    }
+    
+    func checkDate(date: String) -> String {
+        if let dateConvert = date.toDate(format: .input1) {
+            if checkMonthYear(dateCustom: TypeInDate.year(dateConvert), dateCurrent: TypeInDate.year(Date())) {
+                // date is current yeas
+                if checkMonthYear(dateCustom: TypeInDate.day(dateConvert), dateCurrent: TypeInDate.day(Date())) {
+                    // date is day current
+                    return dateConvert.toString(format: .input4).lowercased()
+                } else {
+                    return dateConvert.toString(format: .output6).lowercased()
+                }
+            } else {
+                // date is not current yeas
+                return dateConvert.toString(format: .output3).lowercased()
+            }
+        }
+        return ""
+    }
+    
+    func checkMonthYear(dateCustom: TypeInDate, dateCurrent: TypeInDate) -> Bool {
+         return dateCustom.valueDate == dateCurrent.valueDate
     }
 }

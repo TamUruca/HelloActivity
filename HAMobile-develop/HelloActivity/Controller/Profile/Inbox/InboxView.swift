@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 enum TypeItemInbox {
     case normal
@@ -49,6 +50,8 @@ struct InboxView: View {
                 contentScrollView(geometry)
             }
             .frame(height: geometry.size.height)
+            .background(Color.white)
+            .padding(.top, -1)
         }
         .disabled(progressApp.isShowProgressView)
         .alert(item: $inboxVM.error) { error in
@@ -56,12 +59,7 @@ struct InboxView: View {
         }
         .onAppear {
             // get inbox
-            inboxVM.getAPIInbox(progressApp: progressApp){ isSuccess in
-            }
-            
-            inboxVM.$inboxdata.sink { data in
-                
-            }
+            inboxVM.getAPIInbox(progressApp: progressApp)
         }
     }
     
@@ -106,7 +104,7 @@ struct InboxView: View {
             }
             .frame(width: geometry.size.width, alignment: .leading)
         }
-        .frame(width: geometry.size.width)
+        .frame(width: geometry.size.width, height: geometry.size.height/16, alignment: .top)
     }
     
     fileprivate func contentScrollView(_ geometry: GeometryProxy) -> some View {
@@ -129,7 +127,8 @@ struct InboxView: View {
                 print("action ...\(item.activity.title)")
             } label: {
                 HStack {
-                    Image(item.activity.displayImage.first ?? "")
+                    WebImage(url: URL(string: item.activity.displayImage.first ?? ""))
+
                         .resizable()
                         .frame(width: 75, height: 75)
                         .cornerRadius(10, antialiased: true)
@@ -153,7 +152,7 @@ struct InboxView: View {
                                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                                 .lineLimit(1)
                             Spacer()
-                            Text(item.entry.date)
+                            Text(inboxVM.checkDate(date: item.latestMessage.date))
                                 .foregroundColor(.gray)
                                 .font(
                                     .system(size: 15)

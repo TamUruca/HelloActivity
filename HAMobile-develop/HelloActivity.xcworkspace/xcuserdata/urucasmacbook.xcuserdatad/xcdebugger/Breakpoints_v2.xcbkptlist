@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04465CD4-20AB-45E2-9FFB-A970731D72DB"
+            uuid = "B9C43601-F8BC-491F-AD5C-84C30C755CE3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HelloActivity/Controller/Profile/ApplicationListView.swift"
+            filePath = "HelloActivity/Controller/Profile/InboxView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "ApplicationListView"
-            landmarkType = "14">
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "itemView(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

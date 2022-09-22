@@ -78,6 +78,8 @@
 		FD99E78528DC1A4600116D23 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78428DC1A4600116D23 /* ApplicationItem.swift */; };
 		FD99E78728DC37E800116D23 /* PastCancelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78628DC37E800116D23 /* PastCancelContentView.swift */; };
 		FD99E78928DC38B000116D23 /* ConsultationInquiryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */; };
+		FD99E78B28DC51A500116D23 /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78A28DC51A500116D23 /* InboxViewModel.swift */; };
+		FD99E78D28DC52E000116D23 /* InboxDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E78C28DC52E000116D23 /* InboxDataResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +178,8 @@
 		FD99E78428DC1A4600116D23 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		FD99E78628DC37E800116D23 /* PastCancelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastCancelContentView.swift; sourceTree = "<group>"; };
 		FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationInquiryContentView.swift; sourceTree = "<group>"; };
+		FD99E78A28DC51A500116D23 /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		FD99E78C28DC52E000116D23 /* InboxDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxDataResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +369,7 @@
 				0493B3DE28CF3E700086B816 /* CategoryItem.swift */,
 				FD99E77828DB143B00116D23 /* InboxItem.swift */,
 				FD99E78428DC1A4600116D23 /* ApplicationItem.swift */,
+				FD99E78C28DC52E000116D23 /* InboxDataResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				04F3904028D49014002D92BA /* LoginViewModel.swift */,
 				04F3904128D49014002D92BA /* BaseViewModel.swift */,
 				FD99E77128DAE93600116D23 /* ProfileViewModel.swift */,
+				FD99E78A28DC51A500116D23 /* InboxViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -468,9 +474,9 @@
 		FD99E77028DAE90A00116D23 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FD99E78E28DC6A1E00116D23 /* Inbox */,
 				FD99E77C28DB299B00116D23 /* ApplicationView */,
 				049D401428BDAD3D00606A0E /* ProfileView.swift */,
-				FD99E77628DB047500116D23 /* InboxView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -501,6 +507,14 @@
 				FD99E78828DC38B000116D23 /* ConsultationInquiryContentView.swift */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		FD99E78E28DC6A1E00116D23 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				FD99E77628DB047500116D23 /* InboxView.swift */,
+			);
+			path = Inbox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -737,6 +751,7 @@
 				045BCE9C28D9A449006C2430 /* ActivityAreaViewModel.swift in Sources */,
 				041E0A8828D2DA350076A5F4 /* UIGrid.swift in Sources */,
 				041E0A8C28D311080076A5F4 /* BannerTab.swift in Sources */,
+				FD99E78B28DC51A500116D23 /* InboxViewModel.swift in Sources */,
 				045BCEB828DBF701006C2430 /* SearchView.swift in Sources */,
 				049D400928BDAA7800606A0E /* TabBarRouter.swift in Sources */,
 				FD99E77528DAEB5F00116D23 /* ErrorApp.swift in Sources */,
@@ -762,6 +777,7 @@
 				04F3905A28D4906A002D92BA /* RegisterView.swift in Sources */,
 				04830C5D28CED86800EA50B1 /* LoginView.swift in Sources */,
 				04F3904928D49034002D92BA /* APIManager.swift in Sources */,
+				FD99E78D28DC52E000116D23 /* InboxDataResponse.swift in Sources */,
 				FD99E77E28DB2A0200116D23 /* ApplicationListContentView.swift in Sources */,
 				045BCEBA28DC11B0006C2430 /* ActivityItem.swift in Sources */,
 				045BCEB528DBF6AB006C2430 /* ActivityPromotionViewModel.swift in Sources */,

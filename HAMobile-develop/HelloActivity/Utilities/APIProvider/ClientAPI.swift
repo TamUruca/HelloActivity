@@ -15,6 +15,7 @@ enum ClientApi {
     case logout
     case promotion
     case favorite
+    case inbox
 }
 
 extension ClientApi: TargetType {
@@ -40,6 +41,8 @@ extension ClientApi: TargetType {
             return "/api/app/home/promotion"
         case .favorite:
             return "/api/app/home/favorite"
+        case .inbox:
+            return "/api/app/message"
         }
     }
     
@@ -57,6 +60,8 @@ extension ClientApi: TargetType {
             return .get
         case .favorite:
             return .get
+        case .inbox:
+            return .get
         }
     }
     
@@ -65,23 +70,3 @@ extension ClientApi: TargetType {
         return .request
     }
 }
-
-//class Utils {
-//    enum Environment {
-//        case development
-//        case product
-//    }
-//
-//    class func getBaseUrl() -> String {
-//        return "http://localhost:8062"
-//    }
-//
-//    class func postAPILogin() -> String {
-//        return getBaseUrl() + "/api/app/user/authorize"
-//    }
-//
-//    class func postAPIRegister() -> String {
-//        return getBaseUrl() + "/api/app/user/authorize"
-//    }
-//
-//}

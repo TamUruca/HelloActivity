@@ -27,17 +27,18 @@ enum TypeItemInbox {
 struct InboxView: View {
 
     @ObservedObject var tabbarRouter: TabBarRouter
-    @StateObject private var registerVM = RegisterViewModel()
     @EnvironmentObject var progressApp: ProgressApp
-    let inboxList: [InboxItem] = {
-        var array: [InboxItem] = []
-        
-        for i in 1...15 {
-            let item = InboxItem(activityName: "chat1", activityStatus: 0, activityId: "ST-ST-001", inboxContent: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 15ST-00s,", inboxImage: "banner", inboxTime: "10:21", typeInboxItem: (i%2) == 0 ? .read : .normal)
-            array.append(item)
-        }
-        return array
-    }()
+    @StateObject var inboxVM: InboxViewModel = InboxViewModel()
+    
+//    let inboxList: [InboxItem] = {
+//        var array: [InboxItem] = []
+//
+//        for i in 1...15 {
+//            let item = InboxItem(activityName: "chat1", activityStatus: 0, activityId: "ST-ST-001", inboxContent: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 15ST-00s,", inboxImage: "banner", inboxTime: "10:21", typeInboxItem: (i%2) == 0 ? .read : .normal)
+//            array.append(item)
+//        }
+//        return array
+//    }()
     
     var body: some View {
         GeometryReader { geometry in
@@ -50,8 +51,17 @@ struct InboxView: View {
             .frame(height: geometry.size.height)
         }
         .disabled(progressApp.isShowProgressView)
-        .alert(item: $registerVM.error) { error in
+        .alert(item: $inboxVM.error) { error in
             Alert(title: Text("Register Error"), message: Text(error.localizedDescription))
+        }
+        .onAppear {
+            // get inbox
+            inboxVM.getAPIInbox(progressApp: progressApp){ isSuccess in
+            }
+            
+            inboxVM.$inboxdata.sink { data in
+                
+            }
         }
     }
     
@@ -102,7 +112,7 @@ struct InboxView: View {
     fileprivate func contentScrollView(_ geometry: GeometryProxy) -> some View {
         return ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
-                ForEach(inboxList, id: \.self) { item in
+                ForEach(inboxVM.inboxdata, id: \.self) { item in
                     itemView(item)
                     .frame(height: 110)
                     Divider()
@@ -112,22 +122,23 @@ struct InboxView: View {
         }
     }
     
-    fileprivate func itemView(_ item: InboxItem) -> some View {
+    fileprivate func itemView(_ item: ItemInboxData) -> some View {
         return VStack {
             Spacer()
             Button {
-                print("action ...\(item.activityName)")
+                print("action ...\(item.activity.title)")
             } label: {
                 HStack {
-                    Image(item.inboxImage)
+                    Image(item.activity.displayImage.first ?? "")
                         .resizable()
                         .frame(width: 75, height: 75)
                         .cornerRadius(10, antialiased: true)
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         HStack {
-                            let color = item.typeInboxItem.color
-                            Text(item.activityName)
+                            let color = item.entry.status != 0 ? Color.blue : Color.red
+                            let textStatus = item.entry.status != 0 ? R.string.localizable.string_status_true_screen_inbox() : R.string.localizable.string_status_false_screen_inbox()
+                            Text(textStatus)
                                 .foregroundColor(color)
                                 .padding(EdgeInsets(top: 1, leading: 8, bottom: 1, trailing: 8))
                                 .overlay(
@@ -137,22 +148,32 @@ struct InboxView: View {
                                 .font(
                                     .system(size: 15)
                                 )
-                            Text(item.activityId)
+                            Text(item.entry.code)
                                 .foregroundColor(.gray)
                                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+                                .lineLimit(1)
                             Spacer()
-                            Text(item.inboxTime)
+                            Text(item.entry.date)
                                 .foregroundColor(.gray)
                                 .font(
                                     .system(size: 15)
                                 )
+                                .lineLimit(1)
                         }
-                        Text(item.inboxContent)
+                        Text(item.activity.title)
                             .font(
                                 .system(size: 18, weight: .semibold)
                             )
                             .foregroundColor(.black)
                             .lineSpacing(3)
+                            .lineLimit(1)
+                        Text(item.latestMessage.text)
+                            .font(
+                                .system(size: 18, weight: .semibold)
+                            )
+                            .foregroundColor(.black)
+                            .lineSpacing(3)
+                            .lineLimit(1)
                     }
                     .frame(alignment: .leading)
                     .padding(.leading, 10)

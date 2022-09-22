@@ -223,7 +223,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 53 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 55 localization keys.
     struct localizable {
       /// en translation: Can not convert data !
       ///
@@ -373,6 +373,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let title_screen_register = Rswift.StringResource(key: "title_screen_register", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 予約中
+      ///
+      /// Locales: en, ja
+      static let string_status_false_screen_inbox = Rswift.StringResource(key: "string_status_false_screen_inbox", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 会員情報
       ///
       /// Locales: en, ja
@@ -421,6 +425,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja
       static let menu_item_consultation_inquiry_screen_application_list = Rswift.StringResource(key: "menu_item_consultation_inquiry_screen_application_list", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
+      /// en translation: 相談中
+      ///
+      /// Locales: en, ja
+      static let string_status_true_screen_inbox = Rswift.StringResource(key: "string_status_true_screen_inbox", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja"], comment: nil)
       /// en translation: 設定
       ///
       /// Locales: en, ja
@@ -993,6 +1001,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("title_screen_register", bundle: bundle, comment: "")
       }
 
+      /// en translation: 予約中
+      ///
+      /// Locales: en, ja
+      static func string_status_false_screen_inbox(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_status_false_screen_inbox", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_status_false_screen_inbox"
+        }
+
+        return NSLocalizedString("string_status_false_screen_inbox", bundle: bundle, comment: "")
+      }
+
       /// en translation: 会員情報
       ///
       /// Locales: en, ja
@@ -1171,6 +1194,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("menu_item_consultation_inquiry_screen_application_list", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 相談中
+      ///
+      /// Locales: en, ja
+      static func string_status_true_screen_inbox(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("string_status_true_screen_inbox", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "string_status_true_screen_inbox"
+        }
+
+        return NSLocalizedString("string_status_true_screen_inbox", bundle: bundle, comment: "")
       }
 
       /// en translation: 設定

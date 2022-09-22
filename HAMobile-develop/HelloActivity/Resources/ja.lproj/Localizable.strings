@@ -73,6 +73,8 @@
 
 // screen inbox
 "title_screen_inbox"                                               = "受信トレイ";
+"string_status_true_screen_inbox"                                    = "相談中";
+"string_status_false_screen_inbox"                                    = "予約中";
 
 // screen application list
 "title_screen_application_list"                                     = "申込リスト";

@@ -1,34 +1,24 @@
 //
-//  LoginViewModel.swift
+//  InboxViewModel.swift
 //  HelloActivity
 //
-//  Created by Uruca's Macbook on 9/14/22.
+//  Created by Uruca's Macbook on 9/22/22.
 //
 
 import Foundation
 import UIKit
 
-struct LoginCredentials: Codable {
-    var email = "tam@gmail.com"
-    var password = "12345678"
-    var device_id = UIDevice.current.identifierForVendor?.uuidString
-}
 
-final class LoginViewModel: ObservableObject {
+final class InboxViewModel: ObservableObject {
     
-    @Published var credentials = LoginCredentials()
     @Published var error: ErrorApp.ErrorProvider?
-    @Published var userLogindata: UserLoginResponse?
-    
-    var loginDisabled: Bool {
-        credentials.email.isEmpty || credentials.password.isEmpty
-    }
-    
+    @Published var inboxdata: [ItemInboxData] = []
+
     // MARK: - Call API
-    func postAPILogin(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
+    func getAPIInbox(progressApp: ProgressApp, completion: @escaping (Bool) -> Void) {
         progressApp.isShowProgressView = true
         
-        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.login, parameters: credentials.setParams(), typeContentHeader: .json) { [weak self] (success, IsFailResponseError, data, message) -> (Void) in
+        ApiManager.shareInstance.requestAPIJSON(api: ClientApi.inbox, typeContentHeader: .json) { [weak self] (success, IsFailResponseError, data, message) -> (Void) in
             progressApp.isShowProgressView = false
             if !success, !message.isEmpty {
                 self?.error = .errorAPI(error: message)
@@ -39,12 +29,11 @@ final class LoginViewModel: ObservableObject {
                guard let jsonData = try? JSONSerialization.data(withJSONObject: data, options: JSONSerialization.WritingOptions.prettyPrinted) else {return}
                 let decoder = JSONDecoder()
                 do {
-                    let userLogindata = try decoder.decode(UserLoginResponse.self, from: jsonData)
-                    self?.userLogindata = userLogindata
-                    UserDefaultUtils.shared.set(key: UserDefaultsKeys.token, value: userLogindata.data.token)
+                    let inboxDataResponse = try decoder.decode(InboxDataResponse.self, from: jsonData)
+                    self?.inboxdata = inboxDataResponse.data
                     completion(success)
                 } catch {
-                    print(error.localizedDescription)
+                    self?.error = .errorAPI(error: error.localizedDescription)
                 }
             } else if let data = data {
                 progressApp.isShowProgressView = false

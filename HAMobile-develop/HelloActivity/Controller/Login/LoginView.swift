@@ -103,7 +103,6 @@ struct LoginView: View {
                                         isError = true
                                         error = loginVM.error?.errorDescription ?? ""
                                     }
-                                    
                                 }
                             }, label: {
                                 Text(R.string.localizable.string_button_login_screen_login()).foregroundColor(.white)

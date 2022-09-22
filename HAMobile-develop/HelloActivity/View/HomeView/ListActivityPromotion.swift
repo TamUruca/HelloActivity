@@ -10,42 +10,7 @@ import SDWebImageSwiftUI
 
 struct ListActivityPromotion: View {
     
-    let activitiesList = ActivityPageItem(areas: [
-        AreaData(name: "Hawaii", activities: [
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-
-        ]),
-        
-        AreaData(name: "Hawaii", activities: [
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ]),
-        
-        AreaData(name: "Hawaii", activities: [
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ]),
-        
-        AreaData(name: "Hawaii", activities: [
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ]),
-        
-        AreaData(name: "Hawaii", activities: [
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-            ActivityItem(areaName: "Hawaii", title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", displayImages: "https://d3r0o7svow7zdi.cloudfront.net/upload/2018/11/5bed39ebc97f5.jpg"),
-        ])
-    ], count: 1, currentPage: "1")
+    @StateObject private var activityPromotionVm = ActivityPromotionViewModel()
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -62,11 +27,11 @@ struct ListActivityPromotion: View {
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
                 
 //                 Double List
-                ForEach(self.activitiesList.areas ?? [], id: \.self) { area in
+                ForEach(activityPromotionVm.promotionData ?? [], id: \.self) { promotion in
                     VStack(alignment: .leading) {
                         VStack {
-                            Text(area.name ?? "").bold() +
-                            Text(" / ハワイ")
+                            Text(promotion.name ?? "")
+                                .bold()
                                 .font(
                                     .system(size: 12)
                                 )
@@ -75,20 +40,20 @@ struct ListActivityPromotion: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 20) {
-                                ForEach(area.activities ?? [], id: \.self) { activity in
+                                ForEach(promotion.activities ?? [], id: \.self) { activity in
                                     VStack(alignment: .leading) {
-                                        WebImage(url: URL(string: activity.displayImages))
+                                        WebImage(url: URL(string: activity.displayImages.first ?? ""))
                                             .resizable()
                                             .aspectRatio(1, contentMode: .fit)
                                             .cornerRadius(10)
-                                        
-                                        Text("\(area.name ?? "")、 ハワイ/ホノルル")
+
+                                        Text("\(activity.areaName)")
                                             .foregroundColor(.gray)
                                             .font(
                                                 .system(size: 12)
                                             )
                                             .lineLimit(2)
-                                        
+
                                         Text("\(activity.title) \n")
                                             .bold()
                                             .lineLimit(2)
@@ -114,6 +79,9 @@ struct ListActivityPromotion: View {
                 .padding(.vertical, 20)
             }
             .padding(.bottom, 20)
+        }
+        .onAppear {
+            self.activityPromotionVm.getListActivityArea()
         }
     }
 }

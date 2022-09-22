@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct ListActivityArea: View {
     
-    @StateObject private var activityAreaVM = ActivityAreaViewModel()
+    @StateObject private var activityAreaVm = ActivityAreaViewModel()
     
     var body: some View {
         ScrollView {
@@ -27,7 +27,7 @@ struct ListActivityArea: View {
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 10, trailing: 0))
                 
 //                 Custom Grid View
-                UIGrid(columns: 2, list: activityAreaVM.areaDatas ?? []) { area in
+                UIGrid(columns: 2, list: activityAreaVm.areaDatas ?? []) { area in
                     VStack {
                         WebImage(url: URL(string: area.photo ?? ""))
                             .resizable()
@@ -68,7 +68,7 @@ struct ListActivityArea: View {
             }
         }
         .onAppear {
-            activityAreaVM.getListActivityArea()
+            activityAreaVm.getListActivityArea()
         }
     }
 }

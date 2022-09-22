@@ -19,13 +19,23 @@ struct AreasResponse: Hashable, Codable {
 
 // MARK: - AreaItem
 struct AreaData: Hashable, Codable {
+    var id: String?
+    var code: String?
     var name: String?
+    var nameEn: String?
+    var nameTc: String?
+    var nameSc: String?
     var activities: [ActivityItem]?
     var activity_count: String?
     var photo: String?
 
     enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case code = "code"
         case name = "name"
+        case nameEn = "name_en"
+        case nameTc = "name_tc"
+        case nameSc = "name_sc"
         case activities = "activities"
         case activity_count = "activity_count"
         case photo = "photo"

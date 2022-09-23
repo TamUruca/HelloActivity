@@ -26,6 +26,8 @@
 		045BCEB628DBF6AB006C2430 /* ActivityFavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCEB428DBF6AB006C2430 /* ActivityFavoriteViewModel.swift */; };
 		045BCEB828DBF701006C2430 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCEB728DBF701006C2430 /* SearchView.swift */; };
 		045BCEBA28DC11B0006C2430 /* ActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCEB928DC11B0006C2430 /* ActivityItem.swift */; };
+		045BCEBD28DC3A14006C2430 /* FlexibleGirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCEBC28DC3A14006C2430 /* FlexibleGirdView.swift */; };
+		045BCEBF28DC6C4B006C2430 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BCEBE28DC6C4B006C2430 /* CustomSlider.swift */; };
 		04830C5D28CED86800EA50B1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04830C5C28CED86800EA50B1 /* LoginView.swift */; };
 		049287AA28C8A12C006B2EA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049287A928C8A12C006B2EA6 /* AppDelegate.swift */; };
 		0493B3DF28CF3E700086B816 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B3DE28CF3E700086B816 /* CategoryItem.swift */; };
@@ -112,6 +114,8 @@
 		045BCEB428DBF6AB006C2430 /* ActivityFavoriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFavoriteViewModel.swift; sourceTree = "<group>"; };
 		045BCEB728DBF701006C2430 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		045BCEB928DC11B0006C2430 /* ActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItem.swift; sourceTree = "<group>"; };
+		045BCEBC28DC3A14006C2430 /* FlexibleGirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleGirdView.swift; sourceTree = "<group>"; };
+		045BCEBE28DC6C4B006C2430 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		04830C5C28CED86800EA50B1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		049287A928C8A12C006B2EA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049287AB28C8A1D1006B2EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -197,8 +201,8 @@
 		041E0A8628D2DA240076A5F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				045BCEBB28DC39F3006C2430 /* CustomView */,
 				041E0A9728D45D3D0076A5F4 /* HomeView */,
-				041E0A8728D2DA350076A5F4 /* UIGrid.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,8 +210,8 @@
 		041E0A9728D45D3D0076A5F4 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				045BCEB728DBF701006C2430 /* SearchView.swift */,
 				041E0A8B28D311080076A5F4 /* BannerTab.swift */,
+				045BCEB728DBF701006C2430 /* SearchView.swift */,
 				041E0A8D28D411D10076A5F4 /* ListActivityPromotion.swift */,
 				041E0A8928D30AA70076A5F4 /* ListActivityArea.swift */,
 				041E0A9128D457540076A5F4 /* ListActivityTrending.swift */,
@@ -247,6 +251,16 @@
 				0444622428D1810A00F3B7F2 /* ActivityPageItem.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		045BCEBB28DC39F3006C2430 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				041E0A8728D2DA350076A5F4 /* UIGrid.swift */,
+				045BCEBC28DC3A14006C2430 /* FlexibleGirdView.swift */,
+				045BCEBE28DC6C4B006C2430 /* CustomSlider.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		049D401028BDABD100606A0E /* Common */ = {
@@ -692,6 +706,7 @@
 				04F3904A28D49034002D92BA /* Application.swift in Sources */,
 				045BCE9428D979A4006C2430 /* TargetType.swift in Sources */,
 				04F3905828D4906A002D92BA /* FBLoginButton.swift in Sources */,
+				045BCEBD28DC3A14006C2430 /* FlexibleGirdView.swift in Sources */,
 				FD99E76928D8261300116D23 /* ProgressApp.swift in Sources */,
 				045BCEB628DBF6AB006C2430 /* ActivityFavoriteViewModel.swift in Sources */,
 				049D401728BDAE9000606A0E /* ChatView.swift in Sources */,
@@ -718,6 +733,7 @@
 				041E0A8A28D30AA70076A5F4 /* ListActivityArea.swift in Sources */,
 				045BCE9C28D9A449006C2430 /* ActivityAreaViewModel.swift in Sources */,
 				041E0A8828D2DA350076A5F4 /* UIGrid.swift in Sources */,
+				045BCEBF28DC6C4B006C2430 /* CustomSlider.swift in Sources */,
 				041E0A8C28D311080076A5F4 /* BannerTab.swift in Sources */,
 				045BCEB828DBF701006C2430 /* SearchView.swift in Sources */,
 				049D400928BDAA7800606A0E /* TabBarRouter.swift in Sources */,
